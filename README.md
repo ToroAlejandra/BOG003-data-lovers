@@ -36,6 +36,7 @@ Podremos realizar estadísticas de:
 * Poderes
 * Cantidad de resistencia
 * Cantidad de debilidades
+* 
 
 
 
@@ -43,7 +44,8 @@ Podremos realizar estadísticas de:
 
 
 
-***
+
+*** *****
 
 # Data Lovers
 

@@ -1,3 +1,52 @@
+## Definición del producto
+
+### Nuestros usuarios
+
+##### Organización
+Se podran visualizar todos los personajes de pokemon y se van a organizar por número (num) de manera ascendente y descendente. Tambien se podran organizar alfabeticamente por nombre (name) de A-Z y Z-A
+
+##### Filtros
+Podremos filtrar por:
+* Evolución (Primera, segunda y tercera)
+* Tamaño (size) por altura o por peso
+* * height
+* * weight
+* pokemon-rarity (normal, legendary, mythic)
+* (type) que corresponde a Pokemon-rarity pero se selecciona por el tipo (bug, water, fire, poison, ...)
+* encounter
+* * base-flee-rate"
+* * "base-capture-rate
+* spawn-chance (Posibilidad de generación)
+*     "stats"+
+* * base-attack
+* * base-defense
+* * base-stamina
+* * max-cp
+* * max-hp
+* resistant("water","electric","grass","fighting","fairy")
+* weaknesses("fire", "ice","flying","psychic")
+* quick-move ("name", "type", "base-damage", "energy", "move-duration-seg")
+* special-attack ("name", "type", "base-damage", "energy", "move-duration-seg")
+* egg (Validar si viene en huevo o no, "distancia")
+* buddy-distance (km)
+* evolution ("candy")
+
+##### Estadísticas
+Podremos realizar estadísticas de:
+* Poderes
+* Cantidad de resistencia
+* Cantidad de debilidades
+* 
+
+
+
+
+
+
+
+
+*** *****
+
 # Data Lovers
 
 ## Índice

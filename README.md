@@ -38,7 +38,56 @@ Podremos realizar estadísticas de:
 * Cantidad de debilidades
 
 
+## Historias de Usuarios
 
+Nuestros usuarios son una comunidad de jugadores de Pokemon Go que quieran conocer acerca de las caracteristicas de cada pokemon de la región de Kanto y Johto.
+
+### Como usuario quiero ver una pantalla inicial que contenga un menú para decidir por donde quiero navegar
+#### Criterios de aceptación
+* Que sea visto desde diferentes dispositivos
+* Que la visualización de la pantalla sea relacionada con el tema
+* Que la navegación sea intuitiva
+* Que el menú de navegación sea claro
+* Que la tipografia y colores sea agradable a la vista
+* Que la distribución de la pantalla sea la adecuada
+#### Definición de Terminado
+* Uso de flexbox
+* El HTML es semántico
+* Contiene selectores de CSS
+* Que sea responsive
+* Fundamentos de visual design
+* Que el diseño sea similar al prototipo (maquetación)
+* Testeo de usabilidad
+
+
+### Como usuario quiero que me muestre cada pokemon, separados por tarjetas para verificar cada una de sus caracteristicas.
+#### Criterios de aceptación
+* Que muestre en la primer pantalla los pokemones organizados por números.
+* Que muestre cada pokemon en una tarjeta separada.
+* Que en cada tarjeta esten las caracteristicas de cada pokemon (tipo, debilidades, resistencia, peso, altura...).
+* Que pueda ver la imagen y el nombre de cada pokemon.
+* Que pueda ver cada una de las evoluciones.
+* Que indique en la taarjeta si tiene próximas evoluciones.
+#### Definición de Terminado
+* Cargar las imagenes y los nombres mediante el codigo
+* Pasa los test de funcionalidad
+* El codigo muestre las caracteristicas del pokemon en cada tarjeta.
+* El estilo de la tarjeta que contiene la información del Pokemon sea el planteado.
+* animación de girar la tarjeta
+* Determinar la ubicación de las tarjetas en la pantalla.
+
+
+
+
+Como usuario quiero filtrar los pokemon para conocer cuales pertenecen a la región de Kanto y Johto.
+Quiero organizar los pokemon para que se muestren alafabeticamente.
+Quiero organizar los pokemon para que se muestren de mayor a menor y viceversa.
+Como usuario quiero Filtrar los pokemos para identificar de que tipo son.
+Como usuario quiero Filtrar los pokemon para identificar cuales tienen cierta característica única.
+Saber todos los Pokemon que tienen una segunda evolución (Tercer fase)
+
+Cuantos pokemon vienen en huevo.
+Saber que Pokemon se encuentran a 2 km
 
 
 

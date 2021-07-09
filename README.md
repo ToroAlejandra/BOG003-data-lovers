@@ -24,7 +24,18 @@ Podremos filtrar por:
 * * max-cp
 * * max-hp
 * resistant("water","electric","grass","fighting","fairy")
-* 
+* weaknesses("fire", "ice","flying","psychic")
+* quick-move ("name", "type", "base-damage", "energy", "move-duration-seg")
+* special-attack ("name", "type", "base-damage", "energy", "move-duration-seg")
+* egg (Validar si viene en huevo o no, "distancia")
+* buddy-distance (km)
+* evolution ("candy")
+
+##### Estadísticas
+Podremos realizar estadísticas de:
+* Poderes
+* Cantidad de resistencia
+* Cantidad de debilidades
 
 
 

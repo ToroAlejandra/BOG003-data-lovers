@@ -36,6 +36,7 @@ Podremos realizar estadísticas de:
 * Poderes
 * Cantidad de resistencia
 * Cantidad de debilidades
+* 
 
 
 ## Historias de Usuarios
@@ -50,12 +51,11 @@ Nuestros usuarios son una comunidad de jugadores de Pokemon Go que quieran conoc
 * Que el menú de navegación sea claro
 * Que la tipografia y colores sea agradable a la vista
 * Que la distribución de la pantalla sea la adecuada
+* 
 #### Definición de Terminado
 * Uso de flexbox
 * El HTML es semántico
-* Contiene selectores de CSS
 * Que sea responsive
-* Fundamentos de visual design
 * Que el diseño sea similar al prototipo (maquetación)
 * Testeo de usabilidad
 
@@ -79,20 +79,22 @@ Nuestros usuarios son una comunidad de jugadores de Pokemon Go que quieran conoc
 
 
 
-Como usuario quiero filtrar los pokemon para conocer cuales pertenecen a la región de Kanto y Johto.
-Quiero organizar los pokemon para que se muestren alafabeticamente.
-Quiero organizar los pokemon para que se muestren de mayor a menor y viceversa.
-Como usuario quiero Filtrar los pokemos para identificar de que tipo son.
-Como usuario quiero Filtrar los pokemon para identificar cuales tienen cierta característica única.
-Saber todos los Pokemon que tienen una segunda evolución (Tercer fase)
-
-Cuantos pokemon vienen en huevo.
-Saber que Pokemon se encuentran a 2 km
+### Como usuario quiero filtrar los pokemon para conocer cuales pertenecen a la región de Kanto y Johto.
+### Como usuario quiero organizar los pokemon para que se muestren alafabeticamente (A-Z Z-A) y numericamente (De menor a mayor y vs).
+### Como usuario quiero Filtrar los pokemos para identificar de que tipo son.
+### Como usuario quiero Filtrar los pokemon para identificar cuales tienen cierta característica única.
 
 
+  * Estadistica
+### Como jugador quiero saber las estadisticas de los pokemones mas poderosos
+  * Calculo
+### Como jugador quiero ver cuantos pokémon hay en la región de Kanto y cuantos en la región de Johto, para saber en que zona existen mas 
 
 
-***
+
+
+
+*** *****
 
 # Data Lovers
 

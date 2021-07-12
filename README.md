@@ -43,7 +43,7 @@ Podremos realizar estadísticas de:
 
 Nuestros usuarios son una comunidad de jugadores de Pokemon Go que quieran conocer acerca de las caracteristicas de cada pokemon de la región de Kanto y Johto.
 
-### Como usuario quiero ver una pantalla inicial que contenga un menú para decidir por donde quiero navegar
+### 1. Como usuario quiero ver una pantalla inicial que contenga un menú para decidir por donde quiero navegar
 #### Criterios de aceptación
 * Que sea visto desde diferentes dispositivos
 * Que la visualización de la pantalla sea relacionada con el tema
@@ -60,7 +60,7 @@ Nuestros usuarios son una comunidad de jugadores de Pokemon Go que quieran conoc
 * Testeo de usabilidad
 
 
-### Como usuario quiero que me muestre cada pokemon, separados por tarjetas para verificar cada una de sus caracteristicas.
+### 2. Como usuario quiero que me muestre cada pokemon, separados por tarjetas para verificar cada una de sus caracteristicas.
 #### Criterios de aceptación
 * Que muestre en la primer pantalla los pokemones organizados por números.
 * Que muestre cada pokemon en una tarjeta separada.
@@ -79,22 +79,22 @@ Nuestros usuarios son una comunidad de jugadores de Pokemon Go que quieran conoc
 
 
 
-### Como usuario quiero filtrar los pokemon para conocer cuales pertenecen a la región de Kanto y Johto.
-### Como usuario quiero organizar los pokemon para que se muestren alafabeticamente (A-Z Z-A) y numericamente (De menor a mayor y vs).
-### Como usuario quiero Filtrar los pokemos para identificar de que tipo son.
-### Como usuario quiero Filtrar los pokemon para identificar cuales tienen cierta característica única.
+### 3. Como usuario quiero filtrar los pokemon para conocer cuales pertenecen a la región de Kanto y Johto.
+### 4. Como usuario quiero organizar los pokemon para que se muestren alafabeticamente (A-Z Z-A) y numericamente (De menor a mayor y vs).
+### 5. Como usuario quiero Filtrar los pokemos para identificar de que tipo son.
+### 6. Como usuario quiero Filtrar los pokemon para identificar cuales tienen cierta característica única.
 
 
-  * Estadistica
-### Como jugador quiero saber las estadisticas de los pokemones mas poderosos
-  * Calculo
-### Como jugador quiero ver cuantos pokémon hay en la región de Kanto y cuantos en la región de Johto, para saber en que zona existen mas 
+## Estadistica
+### 7. Como jugador quiero saber las estadisticas de los pokemones mas poderosos
+## Calculo
+### 8. Como jugador quiero ver cuantos pokémon hay en la región de Kanto y cuantos en la región de Johto, para saber en que zona existen mas
 
 
 
 
 
-*** *****
+********
 
 # Data Lovers
 

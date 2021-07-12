@@ -39,6 +39,8 @@ Podremos realizar estadísticas de:
 * 
 
 
+Definición de terminado
+Criterios de Aceptación para cada una.
 
 
 

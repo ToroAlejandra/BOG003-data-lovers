@@ -38,7 +38,7 @@ Podremos realizar estadísticas de:
 * Cantidad de debilidades
 * 
 
-# ### ## Lo primero que se debe hacer es lo mas importante para el usuario, no hacer la primera vista, Se debe manejar de lo mas importante (Util para el usuario)/(Lo que me aporte mas aprendizaje a nosotras) 
+
 
 *****************************
 

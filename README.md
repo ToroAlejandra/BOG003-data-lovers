@@ -39,6 +39,9 @@ Podremos realizar estadísticas de:
 * 
 
 # ### ## Lo primero que se debe hacer es lo mas importante para el usuario, no hacer la primera vista, Se debe manejar de lo mas importante (Util para el usuario)/(Lo que me aporte mas aprendizaje a nosotras) 
+
+*****************************
+
 ## Historias de Usuarios
 
 Nuestros usuarios son una comunidad de jugadores de Pokemon Go que quieran conocer acerca de las caracteristicas de cada pokemon de la región de Kanto y Johto.
@@ -81,12 +84,21 @@ Nuestros usuarios son una comunidad de jugadores de Pokemon Go que quieran conoc
 
 
 ### 3. Como usuario quiero filtrar la lista de pokemon de acuerdo a ciertos atributos
-#### Criterios de A
+#### Criterios de Aceptación
 * los pokemon para conocer cuales pertenecen a la región de Kanto y Johto.
 * Como usuario quiero Filtrar los pokemos para identificar de que tipo son
 * Como usuario quiero Filtrar los pokemon para identificar cuales tienen cierta característica única.
-#### T
-* Va a estar terminada cuando cumpla con todos los filtros
+* Como jugador principiante quiro poder ordenar los filtros (Filtros acumulativos)
+
+#### Definición de terminado
+
+* Todo el código esta en la rama master en GitHub y esta publicado en GitHub pages
+* Uso de flexbox
+* El HTML es semántico
+* Que sea responsive
+* Que el diseño sea similar al prototipo (maquetación)
+* Testeo de usabilidad
+
 ##### Test
 * incluir los test en la HU
 

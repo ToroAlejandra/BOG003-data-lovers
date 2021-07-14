@@ -38,21 +38,22 @@ Podremos realizar estadísticas de:
 * Cantidad de debilidades
 * 
 
-
+# ### ## Lo primero que se debe hacer es lo mas importante para el usuario, no hacer la primera vista, Se debe manejar de lo mas importante (Util para el usuario)/(Lo que me aporte mas aprendizaje a nosotras) 
 ## Historias de Usuarios
 
 Nuestros usuarios son una comunidad de jugadores de Pokemon Go que quieran conocer acerca de las caracteristicas de cada pokemon de la región de Kanto y Johto.
 
-### 1. Como usuario quiero ver una pantalla inicial que contenga un menú para decidir por donde quiero navegar
+### 1. Como usuario quiero ver una pantalla inicial que contenga un menú para decidir por donde quiero navegar/( para saber si quiero seguir navegando)
 #### Criterios de aceptación
-* Que sea visto desde diferentes dispositivos
-* Que la visualización de la pantalla sea relacionada con el tema
-* Que la navegación sea intuitiva
+* Debe ser responsive para pc y movil
+* Que la visualización de la pantalla sea relacionada con el tema 
+* Que la navegación sea interactiva entre los personajes
 * Que el menú de navegación sea claro
 * Que la tipografia y colores sea agradable a la vista
 * Que la distribución de la pantalla sea la adecuada
 * 
 #### Definición de Terminado
+* Todo el código esta en la rama master en GitHub y esta publicado en GitHub pages
 * Uso de flexbox
 * El HTML es semántico
 * Que sea responsive
@@ -79,13 +80,21 @@ Nuestros usuarios son una comunidad de jugadores de Pokemon Go que quieran conoc
 
 
 
-### 3. Como usuario quiero filtrar los pokemon para conocer cuales pertenecen a la región de Kanto y Johto.
+### 3. Como usuario quiero filtrar la lista de pokemon de acuerdo a ciertos atributos
+#### Criterios de A
+* los pokemon para conocer cuales pertenecen a la región de Kanto y Johto.
+* Como usuario quiero Filtrar los pokemos para identificar de que tipo son
+* Como usuario quiero Filtrar los pokemon para identificar cuales tienen cierta característica única.
+#### T
+* Va a estar terminada cuando cumpla con todos los filtros
+##### Test
+* incluir los test en la HU
+
 ### 4. Como usuario quiero organizar los pokemon para que se muestren alafabeticamente (A-Z Z-A) y numericamente (De menor a mayor y vs).
-### 5. Como usuario quiero Filtrar los pokemos para identificar de que tipo son.
-### 6. Como usuario quiero Filtrar los pokemon para identificar cuales tienen cierta característica única.
 
 
-## Estadistica
+
+## Estadistica (graficos visualización de datos de manera amigable)
 ### 7. Como jugador quiero saber las estadisticas de los pokemones mas poderosos
 ## Calculo
 ### 8. Como jugador quiero ver cuantos pokémon hay en la región de Kanto y cuantos en la región de Johto, para saber en que zona existen mas

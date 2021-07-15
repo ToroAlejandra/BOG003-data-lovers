@@ -1,18 +1,16 @@
-/*.pokemon-cards{
-    flex-wrap: wrap;
-}
+.sectionCard {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20%;
+  justify-content: space-around;
+  grid-gap: 10px;
+  padding: 100px;
+} 
 
 .item {
-    flex-grow: 4; /* default 0 */
-  }*/
-
-.pokemon-cards {
-grid-template-columns: 100px 50px 100px;
-grid-template-rows: 80px auto 80px; 
-column-gap: 10px;
-row-gap: 15px;
-}
-
-.item {
-align-self: center;
+  border-radius: 20px;
+  
+  font-size: 30px;
+  text-align: center;
+  background-size: 100%;
+  background-image: url("./img/mapaPokemon.webp");
 }

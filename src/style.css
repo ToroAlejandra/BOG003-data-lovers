@@ -1,16 +1,13 @@
-.sectionCard {
+
+.containerCard {
   display: grid;
   grid-template-columns: 20% 20% 20% 20%;
-  justify-content: space-around;
   grid-gap: 10px;
-  padding: 100px;
-} 
-
-.item {
-  border-radius: 20px;
-  
-  font-size: 30px;
+  grid-auto-rows: minmax(100px, auto);
+  justify-content: space-around;
+}
+.boxPokemon {
   text-align: center;
-  background-size: 100%;
-  background-image: url("./img/mapaPokemon.webp");
+  background-image: url("img/mapa.jpg");
+  background-size: 100% 100%;
 }

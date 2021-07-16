@@ -1,60 +1,36 @@
 
 .containerCard {
-  text-align: center;
   display: flex;
   flex-wrap: wrap;
-  /* grid-auto-rows: minmax(100px, auto); */
-  /* flex-flow: row wrap; */
-  justify-content: space-around; 
+  justify-content: space-between;
+  flex-flow: row wrap;
 }
+
 .box-Content {
   border: solid black;
   display:flex;
+  width: 250px;
+  height: 400px;
   flex-direction: column;
-  
-  /* flex-flow: row wrap; */
   justify-content: center;
-}
-.image-Pokemon {
-  border: solid blue;
-  position: relative;
-  z-index: 2;
- align-self: center;
- order: 0;
 }
 
 .boxPokemon {
-  display: flex;
-  flex-flow: row wrap;
-  border: solid chartreuse;
-  z-index: 1;
-  flex:  100%;
-  height: 50px;
-  width: 50px;
-  text-align: center;
+  width: 250px;
+  height: 286px;
+  align-self: center;
   background-image: url("img/mapa.jpg");
-  /* opacity: 0.5; */
-  background-size: 100% 100%; 
-  background-size: cover;
+  background-size: 100% 100%;
+  position: absolute;
+  z-index: 1;
+}
+.image-Pokemon {
+ align-self: center;
+ z-index: 2;
+ margin-top: -160px;
 }
 
-/* .backgroundImage{
-  border-radius: 17px;
-  place-self: center;
-  width: 90%;
-  height: 90%;
-  position: relative;
-  background-color: rgb(255, 255, 255);
-  opacity: 0.65;
-  grid-column: 1;
-  grid-row: 2 / 6; 
-  background-size: cover;
-} */
-
-
-
-/* .name-NumPokemon {
-  position: relative;
-  grid-column: 1;
-  grid-row: 4/ 6;
-} */
+.name-NumPokemon {
+align-self: center;
+z-index: 2;
+}

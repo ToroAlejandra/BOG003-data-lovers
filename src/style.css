@@ -1,31 +1,36 @@
 
 .containerCard {
   text-align: center;
-  display: grid;
-  grid-template-columns: 23% 23% 23% 23%;
-  grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+  display: flex;
+  flex-wrap: wrap;
+  /* grid-auto-rows: minmax(100px, auto); */
+  /* flex-flow: row wrap; */
   justify-content: space-around; 
 }
-
-.boxContent{ /*Contenedor principal, contiene la imagen y la tarjeta*/
-  padding-top: 10px;
-  /* border: solid black; */
-  display: grid;
-  grid-template-rows: 20% 20% 20% 20% 20%;
+.box-Content {
+  border: solid black;
+  display:flex;
+  flex-direction: column;
+  
+  /* flex-flow: row wrap; */
+  justify-content: center;
 }
-
-.image-Pokemon{
+.image-Pokemon {
+  border: solid blue;
   position: relative;
-  bottom: 20px;
-  grid-column: 1;
-  grid-row: 1 / 4;
+  z-index: 2;
+ align-self: center;
+ order: 0;
 }
 
-.boxPokemon { /*Contiene el fondo de la tarjeta*/
-  border-radius: 17px;
-  grid-column: 1;
-  grid-row: 2 / 6;
+.boxPokemon {
+  display: flex;
+  flex-flow: row wrap;
+  border: solid chartreuse;
+  z-index: 1;
+  flex:  100%;
+  height: 50px;
+  width: 50px;
   text-align: center;
   background-image: url("img/mapa.jpg");
   /* opacity: 0.5; */
@@ -33,7 +38,7 @@
   background-size: cover;
 }
 
-.backgroundImage{
+/* .backgroundImage{
   border-radius: 17px;
   place-self: center;
   width: 90%;
@@ -41,14 +46,15 @@
   position: relative;
   background-color: rgb(255, 255, 255);
   opacity: 0.65;
-  /* background-size: 90% 90%; */
   grid-column: 1;
   grid-row: 2 / 6; 
   background-size: cover;
-}
+} */
 
-.name-NumPokemon {
+
+
+/* .name-NumPokemon {
   position: relative;
   grid-column: 1;
   grid-row: 4/ 6;
-}
+} */

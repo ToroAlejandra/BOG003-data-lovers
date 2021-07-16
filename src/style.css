@@ -1,4 +1,3 @@
-
 .containerCard {
   display: flex;
   flex-wrap: wrap;
@@ -14,22 +13,51 @@
   justify-content: center;
 }
 
+.white-Box {
+  width: 90%;
+  height: 90%;
+  background-size:90%;
+  background-color: rgba(255,255,255,0.65);
+  border-radius: 10%;
+}
+
 .boxPokemon {
+  display: flex;
   width: 250px;
   height: 286px;
-  align-self: center;
+  align-items: center;
   background-image: url("img/mapa.jpg");
   background-size: 100% 100%;
   position: absolute;
   z-index: 1;
+  border-radius: 10%;
+  place-content: center;
 }
 .image-Pokemon {
  align-self: center;
  z-index: 2;
- margin-top: -160px;
+ margin-top: -80px;
 }
 
 .name-NumPokemon {
 align-self: center;
 z-index: 2;
+text-align: center;
+}
+
+.num-Style {
+  color: #929090;
+  font-family: 'Lato', sans-serif;
+}
+.name-Style {
+  color: #333333;
+  font-family: 'Lato', sans-serif;
+  font-weight: bolder;
+}
+.typeBox-Img {
+  border: solid blue;
+  z-index: 3;
+}
+.stats-Data {
+  z-index: 3;
 }

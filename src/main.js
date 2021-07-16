@@ -41,6 +41,7 @@ data.pokemon.forEach((element) => {
 
     let boxCard = document.createElement("div");
     boxCard.setAttribute("class", "boxPokemon");
+    boxCard.setAttribute("class", "white-Box");
 
     box.appendChild(boxCard);
     box.appendChild(nameBox);

@@ -9,36 +9,41 @@ console.log(example, data);
 //console.log(data.pokemon[0].size.height);
 
 data.pokemon.forEach((element) => {
-    let box = document.createElement("div");
-    let boxCard = document.createElement("div");
-    let nameBox = document.createElement("div");
-    let imgPokemon = document.createElement("img");
-    let numPokemon = document.createElement("h2");
-    let namePokemon = document.createElement("h2");
     let containerBox = document.getElementById("container");
 
     //Se establece el atributo para el estilo de los div
     containerBox.setAttribute("class", "containerCard");
+
+    let boxCard = document.createElement("div");
     boxCard.setAttribute("class", "boxPokemon");
-    nameBox.setAttribute("class", "name-NumPokemon");
 
     //Se toma la imagen de la data y se añade al index
+    let box = document.createElement("div");
+    let imgBox = document.createElement("div");
+    let imgPokemon = document.createElement("img");
+    box.setAttribute("class", "box-Content");
+    imgBox.setAttribute("class", "image-Pokemon");
     imgPokemon.src = element.img;
-    box.appendChild(imgPokemon);
-
+    imgBox.appendChild(imgPokemon);
+    box.appendChild(imgBox);
+    
     //Se toma el número del pokémon de la data y se añade al index
+    let nameBox = document.createElement("div");
+    let numPokemon = document.createElement("h2");
+    let namePokemon = document.createElement("h2");
+    nameBox.setAttribute("class", "name-NumPokemon");
     numPokemon.innerHTML = element.num;
     nameBox.appendChild(numPokemon);
-
-    //Se toma el nombre del pokémon de la data y se añade al index
     namePokemon.innerHTML = element.name;
     nameBox.appendChild(namePokemon);
 
+    //Se toma el nombre del pokémon de la data y se añade al index
+
     box.appendChild(boxCard);
     box.appendChild(nameBox);
-    
-    
-    
+
+
+
 
     containerBox.appendChild(box);
 

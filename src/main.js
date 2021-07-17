@@ -5,7 +5,7 @@ import data from './data/pokemon/pokemon.js';
 
 console.log(example, data);
 
-console.log("num  ",data.pokemon[0]['num']);
+console.log("num  ",data.pokemon[0]['type'][0]);
 //console.log(data.pokemon[0].size.height);
 
 data.pokemon.forEach((element) => {
@@ -31,18 +31,22 @@ data.pokemon.forEach((element) => {
     let numPokemon = document.createElement("h2");
     let namePokemon = document.createElement("h2");
     nameBox.setAttribute("class", "name-NumPokemon");
+    numPokemon.setAttribute("class", "num-Style");
     numPokemon.innerHTML = element.num;
     nameBox.appendChild(numPokemon);
     namePokemon.innerHTML = element.name;
+    namePokemon.setAttribute("class", "name-Style");
     nameBox.appendChild(namePokemon);
     //backgroundWhite.appendChild(namePokemon);
 
     //Se toma el nombre del pokémon de la data y se añade al index
 
     let boxCard = document.createElement("div");
+    let whiteBoxCard = document.createElement("div");;
     boxCard.setAttribute("class", "boxPokemon");
-    boxCard.setAttribute("class", "white-Box");
+    whiteBoxCard.setAttribute("class", "white-Box");
 
+    boxCard.appendChild(whiteBoxCard);
     box.appendChild(boxCard);
     box.appendChild(nameBox);
 

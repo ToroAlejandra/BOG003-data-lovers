@@ -14,7 +14,11 @@ data.pokemon.forEach((element) => {
     //Se establece el atributo para el estilo de los div
     containerBox.setAttribute("class", "containerCard");
 
-    
+    let boxCard = document.createElement("div");
+    boxCard.setAttribute("class", "boxPokemon");
+    let whiteBoxCard = document.createElement("div");
+    whiteBoxCard.setAttribute("class", "white-Box");
+    boxCard.appendChild(whiteBoxCard);
 
     //Se toma la imagen de la data y se añade al index
     let box = document.createElement("div");
@@ -32,6 +36,7 @@ data.pokemon.forEach((element) => {
     let namePokemon = document.createElement("h2");
     nameBox.setAttribute("class", "name-NumPokemon");
     numPokemon.setAttribute("class", "num-Style");
+    namePokemon.setAttribute("class", "name-Style");
     numPokemon.innerHTML = element.num;
     nameBox.appendChild(numPokemon);
     namePokemon.innerHTML = element.name;
@@ -39,16 +44,37 @@ data.pokemon.forEach((element) => {
     nameBox.appendChild(namePokemon);
     //backgroundWhite.appendChild(namePokemon);
 
+    let typeBox = document.createElement("div");
+    element.type.forEach((e) => {
+        let typeImage = document.createElement("img");
+        typeImage.src="img/"+e + ".webp";
+        typeImage.setAttribute("class", "typeImg");
+        typeBox.appendChild(typeImage);
+    });
+    
+    typeBox.setAttribute("class", "typeBox-Img");
+    
+    let tableStats = document.createElement("table");
+    let titleStats = document.createElement("tr");
+    let titleCp = document.createElement("td");
+    let numStats = document.createElement("tr");
+    let numCp = document.createElement("td");
+    tableStats.setAttribute("class", "stats-Data");
+    titleCp.innerHTML = "CP";
+    numCp.innerHTML = element.stats['max-cp'];
+    titleStats.appendChild(titleCp);
+    numStats.appendChild(numCp);
+    tableStats.appendChild(titleStats, numCp);
+    tableStats.appendChild(numCp);
+
     //Se toma el nombre del pokémon de la data y se añade al index
 
-    let boxCard = document.createElement("div");
-    let whiteBoxCard = document.createElement("div");;
-    boxCard.setAttribute("class", "boxPokemon");
-    whiteBoxCard.setAttribute("class", "white-Box");
-
-    boxCard.appendChild(whiteBoxCard);
     box.appendChild(boxCard);
     box.appendChild(nameBox);
+    box.appendChild(typeBox);
+    box.appendChild(tableStats);
+
+
 
     containerBox.appendChild(box);
 

@@ -5,7 +5,7 @@ import data from './data/pokemon/pokemon.js';
 
 console.log(example, data);
 
-//console.log(data.pokemon[0].num);
+console.log("num  ",data.pokemon[0]['type'][0]);
 //console.log(data.pokemon[0].size.height);
 
 data.pokemon.forEach((element) => {
@@ -40,7 +40,9 @@ data.pokemon.forEach((element) => {
     numPokemon.innerHTML = element.num;
     nameBox.appendChild(numPokemon);
     namePokemon.innerHTML = element.name;
+    namePokemon.setAttribute("class", "name-Style");
     nameBox.appendChild(namePokemon);
+    //backgroundWhite.appendChild(namePokemon);
 
     let typeBox = document.createElement("div");
     element.type.forEach((e) => {
@@ -104,5 +106,7 @@ data.pokemon.forEach((element) => {
 
     containerBox.appendChild(box);
 
-
 });
+
+//fetch
+//promesas

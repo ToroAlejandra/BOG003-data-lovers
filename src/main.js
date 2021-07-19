@@ -53,19 +53,47 @@ data.pokemon.forEach((element) => {
     });
     
     typeBox.setAttribute("class", "typeBox-Img");
-    
-    let tableStats = document.createElement("table");
-    let titleStats = document.createElement("tr");
-    let titleCp = document.createElement("td");
-    let numStats = document.createElement("tr");
-    let numCp = document.createElement("td");
+
+    let tableStats = document.createElement("div");
+    let titleStats = document.createElement("div");
+    let titleCp = document.createElement("h4");
+    let titleAttack = document.createElement("h4");
+    let titleDefense = document.createElement("h4");
+    let titleStamina = document.createElement("h4");
+
+    let numStats = document.createElement("div");
+
+    let numCp = document.createElement("h5");
+    let numAttack = document.createElement("h5");
+    let numDefense = document.createElement("h5");
+    let numStamina = document.createElement("h5");
+
     tableStats.setAttribute("class", "stats-Data");
+    titleStats.setAttribute("class", "");
+    numStats.setAttribute("class", "");
+
     titleCp.innerHTML = "CP";
+    titleAttack.innerHTML = "Attack";
+    titleDefense.innerHTML = "Defense";
+    titleStamina.innerHTML = "Stamina";
+
     numCp.innerHTML = element.stats['max-cp'];
+    numAttack.innerHTML = element.stats['base-attack'];
+    numDefense.innerHTML = element.stats['base-defense'];
+    numStamina.innerHTML = element.stats['base-stamina'];
+
+    tableStats.appendChild(titleStats);
+    tableStats.appendChild(numStats);
+
     titleStats.appendChild(titleCp);
+    titleStats.appendChild(titleAttack);
+    titleStats.appendChild(titleDefense);
+    titleStats.appendChild(titleStamina);
+
     numStats.appendChild(numCp);
-    tableStats.appendChild(titleStats, numCp);
-    tableStats.appendChild(numCp);
+    numStats.appendChild(numAttack);
+    numStats.appendChild(numDefense);
+    numStats.appendChild(numStamina);
 
     //Se toma el nombre del pokémon de la data y se añade al index
 
@@ -80,32 +108,5 @@ data.pokemon.forEach((element) => {
 
 });
 
-for (let i = 0; i < data.pokemon.length; i++) {
-
-    //console.log(i);
-    //Se crean los contenedores de cada tarjeta
-
-}
-
-//fetch 
-// promesas
-/*for (let i = 0; i < data.pokemon.length; i++) {
-    let cardPokemon = document.createElement("SECTION");
-    cardPokemon.setAttribute("class", "item");
-
-    let imgPokemon = document.createElement("IMG");
-    imgPokemon.src = data.pokemon[i].img;
-    cardPokemon.appendChild(imgPokemon);
-
-    let namePokemon = document.createElement("h4");
-    namePokemon.innerHTML = data.pokemon[i].name;
-    cardPokemon.appendChild(namePokemon);
-
-    let numPokemon = document.createElement("h3");
-    numPokemon.innerHTML = data.pokemon[i].num;
-    cardPokemon.appendChild(numPokemon);
-
-    cardPokemon.insertBefore(numPokemon, namePokemon);
-
-    document.getElementById("cards").appendChild(cardPokemon);
-}*/
+//fetch
+//promesas

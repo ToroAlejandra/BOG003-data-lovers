@@ -69,8 +69,8 @@ data.pokemon.forEach((element) => {
     let numStamina = document.createElement("h5");
 
     tableStats.setAttribute("class", "stats-Data");
-    titleStats.setAttribute("class", "");
-    numStats.setAttribute("class", "");
+    titleStats.setAttribute("class", "title-stats");
+    numStats.setAttribute("class", "num-stats");
 
     titleCp.innerHTML = "CP";
     titleAttack.innerHTML = "Attack";

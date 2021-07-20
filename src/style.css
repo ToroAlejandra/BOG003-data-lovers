@@ -47,7 +47,7 @@
 .image-Pokemon {
  align-self: center;
  z-index: 2;
- margin-top: -80px;
+ margin-top: -114px;
 }
 
 .name-NumPokemon {
@@ -59,6 +59,7 @@ text-align: center;
 .num-Style {
   color: #929090;
   font-family: 'Lato', sans-serif;
+  margin: 0;
 }
 .name-Style {
   color: #333333;
@@ -66,12 +67,37 @@ text-align: center;
   font-weight: bolder;
 }
 .typeBox-Img {
-  border: solid blue;
+  display: flex;
+  background-color: rgba(255,255,255,0.65);;
+  border: solid #929090;
+  width: 55.3%;
+  height: 10%;
+  align-self: center;
+  text-align: center;
+  border-radius: 25px;
+  justify-content: space-evenly;
+  margin: 8px;
+  margin-top: -5px;
   z-index: 3;
 }
 .stats-Data {
+  display: table;
+  width: 85%;
+  text-align: center;
+  margin: 0 auto;
   z-index: 3;
   font-family: 'Lato', sans-serif;
-  font-weight: bold;
-  border: solid teal;
+  color: #333333;
+}
+.title-stats, .num-stats {
+  display: table-row;
+  border: none;
+}
+.title-stats h4, .num-stats h5 {
+  display: table-cell;
+  border-collapse: collapse;
+  border-right: 0.5px solid;
+}
+.title-stats h4:nth-child(4), .num-stats h5:nth-child(4) {
+  border-right: none;
 }

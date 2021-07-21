@@ -93,16 +93,22 @@ data.pokemon.forEach((element) => {
     numStats.appendChild(numDefense);
     numStats.appendChild(numStamina);
 
-    //Se toma el nombre del pokémon de la data y se añade al index
+    //Se crean los div y los estilos para el giro de las tarjetas
+    let flipCard = document.createElement("div");
+    flipCard.setAttribute("class", "flip-card");
+    let flipCardInner = document.createElement("div");
+    flipCardInner.setAttribute("class", "flip-card-inner");
 
+    //Se toma
     box.appendChild(boxCard);
     box.appendChild(nameBox);
     box.appendChild(typeBox);
     box.appendChild(tableStats);
 
+    flipCardInner.appendChild(box);
 
+    flipCard.appendChild(flipCardInner);
 
-    containerBox.appendChild(box);
-
+    containerBox.appendChild(flipCard);
 
 });

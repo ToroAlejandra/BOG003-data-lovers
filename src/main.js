@@ -5,11 +5,11 @@ import data from './data/pokemon/pokemon.js';
 
 console.log(example, data);
 
-console.log("num  ",data.pokemon[0]['type'][0]);
-//console.log(data.pokemon[0].size.height);
-
+let containerBox = document.createElement("div");
+document.body.appendChild(containerBox);
+containerBox.setAttribute("id","container");
 data.pokemon.forEach((element) => {
-    let containerBox = document.getElementById("container");
+    //let containerBox = document.getElementById("container");
 
     //Se establece el atributo para el estilo de los div
     containerBox.setAttribute("class", "containerCard");
@@ -29,7 +29,7 @@ data.pokemon.forEach((element) => {
     imgPokemon.src = element.img;
     imgBox.appendChild(imgPokemon);
     box.appendChild(imgBox);
-    
+
     //Se toma el número del pokémon de la data y se añade al index
     let nameBox = document.createElement("div");
     let numPokemon = document.createElement("h2");
@@ -46,10 +46,14 @@ data.pokemon.forEach((element) => {
 
     let typeBox = document.createElement("div");
     element.type.forEach((e) => {
+        let typeIcon = document.createElement("picture");
+        typeIcon.setAttribute("class", "type-Icon");
+        
         let typeImage = document.createElement("img");
         typeImage.src="img/"+e + ".webp";
         typeImage.setAttribute("class", "typeImg");
-        typeBox.appendChild(typeImage);
+        typeIcon.appendChild(typeImage);
+        typeBox.appendChild(typeIcon);
     });
     
     typeBox.setAttribute("class", "typeBox-Img");
@@ -95,6 +99,31 @@ data.pokemon.forEach((element) => {
     numStats.appendChild(numDefense);
     numStats.appendChild(numStamina);
 
+    let cardBack = document.createElement("div");
+    cardBack.setAttribute("class","card-Back");
+        
+    let imgBoxRotate = document.createElement("div");
+    imgBoxRotate.setAttribute("class", "image-Rotate-Pokemon");
+    let imgPokemonRotate = document.createElement("img");
+    imgPokemonRotate.src = element.img;
+    imgBoxRotate.appendChild(imgPokemonRotate);
+
+    let whiteBoxCardRotate = document.createElement("div");
+    whiteBoxCardRotate.setAttribute("class", "white-Box-Rotate");
+    cardBack.appendChild(whiteBoxCardRotate);
+
+    let resistantBox = document.createElement("div");
+    resistantBox.setAttribute("class", "resistant");
+    cardBack.appendChild(resistantBox);
+    cardBack.appendChild(imgBoxRotate);
+    
+
+    let boxFlip = document.createElement("div");
+    boxFlip.setAttribute("class", "flip-box");
+
+    let boxFlipInner = document.createElement("div");
+    boxFlipInner.setAttribute("class", "flip-box-inner");
+
     //Se toma el nombre del pokémon de la data y se añade al index
 
     box.appendChild(boxCard);
@@ -102,10 +131,12 @@ data.pokemon.forEach((element) => {
     box.appendChild(typeBox);
     box.appendChild(tableStats);
 
+    boxFlipInner.appendChild(cardBack);
+    boxFlipInner.appendChild(box);
+    boxFlipInner.insertBefore(box, cardBack);
+    boxFlip.appendChild(boxFlipInner);
 
-
-    containerBox.appendChild(box);
-
+    containerBox.appendChild(boxFlip);
 });
 
 //fetch

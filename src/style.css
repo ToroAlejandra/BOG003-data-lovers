@@ -101,7 +101,6 @@ text-align: center;
 .title-stats h4:nth-child(4), .num-stats h5:nth-child(4) {
   border-right: none;
 }
-<<<<<<< HEAD
 .flip-card {
   background-color: transparent;
   width: 250px;
@@ -117,5 +116,3 @@ text-align: center;
   transform: rotateY(180deg);
 }
 
-=======
->>>>>>> 166c183d2986adc55cda8edc25fbc74931b81174

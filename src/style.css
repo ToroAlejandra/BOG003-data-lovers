@@ -6,6 +6,7 @@
 }
 
 .box-Content {
+  border: solid black;
   display:flex;
   width: 250px;
   height: 400px;
@@ -28,11 +29,21 @@
   align-items: center;
   background-image: url("img/mapa.jpg");
   background-size: 100% 100%;
+  border-radius: 7%;
   position: absolute;
   z-index: 1;
   border-radius: 10%;
   place-content: center;
 }
+
+.white-Box{
+  width: 90%;
+  height: 90%;
+  background-color: #ffffffa1;
+  
+  border-radius: 7%;
+}
+
 .image-Pokemon {
  align-self: center;
  z-index: 2;
@@ -90,6 +101,7 @@ text-align: center;
 .title-stats h4:nth-child(4), .num-stats h5:nth-child(4) {
   border-right: none;
 }
+<<<<<<< HEAD
 .flip-card {
   background-color: transparent;
   width: 250px;
@@ -105,3 +117,5 @@ text-align: center;
   transform: rotateY(180deg);
 }
 
+=======
+>>>>>>> 166c183d2986adc55cda8edc25fbc74931b81174

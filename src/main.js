@@ -29,7 +29,7 @@ data.pokemon.forEach((element) => {
     imgPokemon.src = element.img;
     imgBox.appendChild(imgPokemon);
     box.appendChild(imgBox);
-    
+
     //Se toma el número del pokémon de la data y se añade al index
     let nameBox = document.createElement("div");
     let numPokemon = document.createElement("h2");
@@ -37,12 +37,12 @@ data.pokemon.forEach((element) => {
     nameBox.setAttribute("class", "name-NumPokemon");
     numPokemon.setAttribute("class", "num-Style");
     namePokemon.setAttribute("class", "name-Style");
-    numPokemon.innerHTML = element.num;
+    numPokemon.textContent = element.num;
     nameBox.appendChild(numPokemon);
-    namePokemon.innerHTML = element.name;
+    namePokemon.textContent = element.name;
     namePokemon.setAttribute("class", "name-Style");
     nameBox.appendChild(namePokemon);
-    //backgroundWhite.appendChild(namePokemon);
+
 
     let typeBox = document.createElement("div");
     element.type.forEach((e) => {
@@ -72,15 +72,15 @@ data.pokemon.forEach((element) => {
     titleStats.setAttribute("class", "title-stats");
     numStats.setAttribute("class", "num-stats");
 
-    titleCp.innerHTML = "CP";
-    titleAttack.innerHTML = "Attack";
-    titleDefense.innerHTML = "Defense";
-    titleStamina.innerHTML = "Stamina";
+    titleCp.textContent = "CP";
+    titleAttack.textContent = "Attack";
+    titleDefense.textContent = "Defense";
+    titleStamina.textContent = "Stamina";
 
-    numCp.innerHTML = element.stats['max-cp'];
-    numAttack.innerHTML = element.stats['base-attack'];
-    numDefense.innerHTML = element.stats['base-defense'];
-    numStamina.innerHTML = element.stats['base-stamina'];
+    numCp.textContent = element.stats['max-cp'];
+    numAttack.textContent = element.stats['base-attack'];
+    numDefense.textContent = element.stats['base-defense'];
+    numStamina.textContent = element.stats['base-stamina'];
 
     tableStats.appendChild(titleStats);
     tableStats.appendChild(numStats);
@@ -100,7 +100,88 @@ data.pokemon.forEach((element) => {
     flipCard.setAttribute("class", "flip-card");
     let flipCardInner = document.createElement("div");
     flipCardInner.setAttribute("class", "flip-card-inner");
+    let boxBack = document.createElement("div");
+    boxBack.setAttribute("class", "box-back");
 
+    let imgBoxBack = document.createElement("div");
+    let imgPokemonBack = document.createElement("img");
+    imgBoxBack.setAttribute("class", "image-Pokemon");
+    imgPokemonBack.src = element.img;
+
+    imgBoxBack.appendChild(imgPokemonBack);
+    boxBack.appendChild(imgBoxBack);
+
+    let whiteBoxCardBack = document.createElement("div");
+    whiteBoxCardBack.setAttribute("class", "white-Box");
+    boxBack.appendChild(whiteBoxCardBack);
+
+    let heightBox = document.createElement("div");
+    heightBox.setAttribute("class", "blueBox");
+    let heightPokemon = document.createElement("div");
+    heightPokemon.setAttribute("class", "height-pokemon");
+    let numHeight = document.createElement("h4");
+    numHeight.setAttribute("class", "num-height");
+    numHeight.textContent = element.size['height'];
+    heightPokemon.appendChild(numHeight);
+    heightBox.appendChild(heightPokemon);
+    boxBack.appendChild(heightBox);
+
+    let weightBox = document.createElement("div");
+    weightBox.setAttribute("class", "blueBox");
+    let weightPokemon = document.createElement("div");
+    weightPokemon.setAttribute("class", "weight-pokemon");
+    let numWeight = document.createElement("h4");
+    numWeight.setAttribute("class", "num-weight");
+    numWeight.textContent = element.size['weight'];
+    weightPokemon.appendChild(numWeight);
+    weightBox.appendChild(weightPokemon);
+    boxBack.appendChild(weightBox);
+
+    let titleResistant = document.createElement("h4");
+    titleResistant.setAttribute("class", "title-back");
+    titleResistant.textContent = "Resistant";
+    let resistantBox = document.createElement("div");
+    resistantBox.setAttribute("class", "blueBox");
+    let resistantPokemon = document.createElement("div");
+    
+
+    resistantPokemon.setAttribute("class", "resistant-pokemon");
+    resistantBox.appendChild(resistantPokemon);
+    boxBack.appendChild(titleResistant);
+    boxBack.appendChild(resistantBox);
+    
+
+    let weaknessesBox = document.createElement("div");
+    weaknessesBox.setAttribute("class", "blueBox");
+    
+    let titleWeaknesses = document.createElement("h4");
+    titleWeaknesses.setAttribute("class", "title-back");
+    titleWeaknesses.textContent = "Weaknesses";
+    let weaknessesPokemon = document.createElement("div");
+    
+    weaknessesPokemon.setAttribute("class", "weaknesses-pokemon");
+    weaknessesBox.appendChild(weaknessesPokemon);
+    
+    boxBack.appendChild(titleWeaknesses);
+    boxBack.appendChild(weaknessesBox);
+    
+
+    //Se traen los inconos de las resistencias
+    element.resistant.forEach((e) => {
+        let resistantImage = document.createElement("img");
+        resistantImage.src="img/"+e + ".webp";
+        // Se deja la misma clase de la imagen del tipo
+        resistantImage.setAttribute("class", "typeImg");
+        resistantPokemon.appendChild(resistantImage);
+    });
+
+    element.weaknesses.forEach((e) => {
+        let weaknessesImage = document.createElement("img");
+        weaknessesImage.src="img/"+e + ".webp";
+        // Se deja la misma clase de la imagen del tipo
+        weaknessesImage.setAttribute("class", "typeImg");
+        weaknessesPokemon.appendChild(weaknessesImage);
+    });
     //Se toma
     box.appendChild(boxCard);
     box.appendChild(nameBox);
@@ -108,16 +189,11 @@ data.pokemon.forEach((element) => {
     box.appendChild(tableStats);
 
     flipCardInner.appendChild(box);
+    flipCardInner.appendChild(boxBack);
+    
 
     flipCard.appendChild(flipCardInner);
 
-<<<<<<< HEAD
     containerBox.appendChild(flipCard);
-=======
-    containerBox.appendChild(box);
->>>>>>> 166c183d2986adc55cda8edc25fbc74931b81174
 
 });
-
-//fetch
-//promesas

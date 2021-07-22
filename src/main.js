@@ -99,44 +99,23 @@ data.pokemon.forEach((element) => {
     numStats.appendChild(numDefense);
     numStats.appendChild(numStamina);
 
-    let cardBack = document.createElement("div");
-    cardBack.setAttribute("class","card-Back");
-        
-    let imgBoxRotate = document.createElement("div");
-    imgBoxRotate.setAttribute("class", "image-Rotate-Pokemon");
-    let imgPokemonRotate = document.createElement("img");
-    imgPokemonRotate.src = element.img;
-    imgBoxRotate.appendChild(imgPokemonRotate);
+    //Se crean los div y los estilos para el giro de las tarjetas
+    let flipCard = document.createElement("div");
+    flipCard.setAttribute("class", "flip-card");
+    let flipCardInner = document.createElement("div");
+    flipCardInner.setAttribute("class", "flip-card-inner");
 
-    let whiteBoxCardRotate = document.createElement("div");
-    whiteBoxCardRotate.setAttribute("class", "white-Box-Rotate");
-    cardBack.appendChild(whiteBoxCardRotate);
-
-    let resistantBox = document.createElement("div");
-    resistantBox.setAttribute("class", "resistant");
-    cardBack.appendChild(resistantBox);
-    cardBack.appendChild(imgBoxRotate);
-    
-
-    let boxFlip = document.createElement("div");
-    boxFlip.setAttribute("class", "flip-box");
-
-    let boxFlipInner = document.createElement("div");
-    boxFlipInner.setAttribute("class", "flip-box-inner");
-
-    //Se toma el nombre del pokémon de la data y se añade al index
-
+    //Se toma
     box.appendChild(boxCard);
     box.appendChild(nameBox);
     box.appendChild(typeBox);
     box.appendChild(tableStats);
 
-    boxFlipInner.appendChild(cardBack);
-    boxFlipInner.appendChild(box);
-    boxFlipInner.insertBefore(box, cardBack);
-    boxFlip.appendChild(boxFlipInner);
+    flipCardInner.appendChild(box);
 
-    containerBox.appendChild(boxFlip);
+    flipCard.appendChild(flipCardInner);
+
+    containerBox.appendChild(flipCard);
 });
 
 //fetch

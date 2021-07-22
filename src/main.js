@@ -1,15 +1,32 @@
-import { example } from './data.js';
+import { filterData } from './data.js';
 // import data from './data/lol/lol.js';
 import data from './data/pokemon/pokemon.js';
 // import data from './data/rickandmorty/rickandmorty.js';
 
-console.log(example, data);
+//console.log(filterData(data.pokemon, `generation['name']:"Kanto"`));
+
+
+let actualPokemon;
+data.pokemon.forEach((element) => {
+    let findType = element.type.find(e => e === "grass");
+    if (findType !== undefined){
+        console.log(element);
+    }
+
+    //console.log(element.type[0]);
+});
+//actualPokemon = data.pokemon.filter(filterPokemon => filterPokemon.type === myobj[key][keytype]);
+//console.log(filterData(data.pokemon, '{"type":"grass"}'));
 
 console.log("num  ",data.pokemon[0]['type'][0]);
 //console.log(data.pokemon[0].size.height);
+const funcionquepintaenelDom = (pokemonaPintar) => {
 
-data.pokemon.forEach((element) => {
+pokemonaPintar.forEach((element) => {
+
     let containerBox = document.getElementById("container");
+    
+    
 
     //Se establece el atributo para el estilo de los div
     containerBox.setAttribute("class", "containerCard");
@@ -197,3 +214,5 @@ data.pokemon.forEach((element) => {
     containerBox.appendChild(flipCard);
 
 });
+};
+funcionquepintaenelDom(filterData(data.pokemon, '{"generation":{"name": "johto"}}'));

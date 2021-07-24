@@ -5,10 +5,11 @@ export const filterData = (data, condition) => {
   var key = Object.keys(condition);
   var key1 = Object.keys(condition[key]);
   let filterPokemon;
+  let clave;
 
   if (condition[key][key1] !== undefined) {
     filterPokemon = data.filter(
-      (poke) => poke[key][key1] === condition[key][key1]
+      (poke) => poke[clave] === condition[clave]//poke[key][key1] === condition[key][key1]
     );
   }else{
     filterPokemon = data.filter(

@@ -25,9 +25,8 @@
   align-items: center;
   background-image: url("img/mapa.jpg");
   background-size: 100% 100%;
-  border-radius: 7%;
   position: absolute;
-  z-index: 1;
+  /* z-index: 1; */
   border-radius: 10%;
   place-content: center;
 }
@@ -150,6 +149,7 @@ text-align: center;
   font-weight: bolder;
   color: white;
 }
+
 .sidenav {
   height: 100%;
   /*width: 0;*/
@@ -173,3 +173,4 @@ text-align: center;
 .sidenav button:hover {
   color: #f1f1f1;
 }
+

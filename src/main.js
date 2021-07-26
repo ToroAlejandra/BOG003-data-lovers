@@ -1,4 +1,4 @@
-import { filterData } from './data.js';
+import { filterData, sortData } from './data.js';
 // import data from './data/lol/lol.js';
 import data from './data/pokemon/pokemon.js';
 // import data from './data/rickandmorty/rickandmorty.js';
@@ -200,8 +200,39 @@ const showPokemon = (currentPokemon) => {
         containerBox.appendChild(flipCard);
     });
 };
+
 let sidenav = document.createElement("div");
 sidenav.setAttribute("class", "sidenav");
+
+let btnSort = document.createElement("button");
+btnSort.setAttribute("class", "btn-sort");
+btnSort.textContent = "Sort";
+let caretDownSort = document.createElement("i");
+caretDownSort.setAttribute("class", "fa fa-caret-down");
+let dropdownContainerSort = document.createElement("div");
+dropdownContainerSort.setAttribute("class", "dropdown-container-sort");
+let dropdownAZ = document.createElement("button");
+dropdownAZ.setAttribute("id", "sortAZ");
+dropdownAZ.setAttribute("class", "sort");
+dropdownAZ.textContent = "A - Z";
+let dropdownZA = document.createElement("button");
+dropdownZA.setAttribute("id", "sortZA");
+dropdownZA.setAttribute("class", "sort");
+dropdownZA.textContent = "Z - A";
+let dropdownUp = document.createElement("button");
+dropdownUp.setAttribute("id", "sortUp");
+dropdownUp.setAttribute("class", "sort");
+dropdownUp.textContent = "Upward";
+let dropdownDown = document.createElement("button");
+dropdownDown.setAttribute("id", "sortDown");
+dropdownDown.setAttribute("class", "sort");
+dropdownDown.textContent = "Downward";
+
+let btnFilter = document.createElement("button");
+btnFilter.setAttribute("class", "btn-Filter");
+btnFilter.textContent = "Filter";
+let caretDownFilter = document.createElement("i");
+caretDownFilter.setAttribute("class", "fa fa-caret-down");
 let btnRegion = document.createElement("button");
 btnRegion.setAttribute("class", "dropdown-btn");
 btnRegion.textContent = "Region";
@@ -299,6 +330,11 @@ dropdownWater.setAttribute("id", "filterWater");
 dropdownWater.setAttribute("class", "typeBtn");
 dropdownWater.textContent = "Water";
 
+dropdownContainerSort.appendChild(dropdownAZ);
+dropdownContainerSort.appendChild(dropdownZA);
+dropdownContainerSort.appendChild(dropdownUp);
+dropdownContainerSort.appendChild(dropdownDown);
+
 dropdownContainer.appendChild(dropdownKanto);
 dropdownContainer.appendChild(dropdownJohto);
 dropdownContainerType.appendChild(dropdownBug);
@@ -319,8 +355,14 @@ dropdownContainerType.appendChild(dropdownPsychic);
 dropdownContainerType.appendChild(dropdownRock);
 dropdownContainerType.appendChild(dropdownSteel);
 dropdownContainerType.appendChild(dropdownWater);
+
+btnSort.appendChild(caretDownSort);
+sidenav.appendChild(btnSort);
+btnFilter.appendChild(caretDownFilter);
 btnRegion.appendChild(caretDown);
 btnType.appendChild(caretDownType);
+sidenav.appendChild(dropdownContainerSort);
+sidenav.appendChild(btnFilter);
 sidenav.appendChild(btnRegion);
 sidenav.appendChild(dropdownContainer);
 sidenav.appendChild(btnType);
@@ -328,22 +370,63 @@ sidenav.appendChild(dropdownContainerType);
 
 document.body.appendChild(sidenav);
 
-let regionBtns = document.querySelectorAll(".regionBtn");
+showPokemon(currentPokemon);
 
+let sortBtns = document.querySelectorAll(".sort");
+sortBtns.forEach(e => {
+    e.addEventListener("click", () => {
+        let sortOrder;
+        let sortBy;
+        if (e.innerText === "A - Z" || e.innerText === "Z - A") {
+            sortBy = "name";
+            if (e.innerText === "A - Z") {
+                sortOrder = "ascendente";
+            } else {
+                sortOrder = "descendente";
+            }   
+        }
+        if (e.innerText === "Upward" || e.innerText === "Downward"){
+            sortBy = "num";
+            if (e.innerText === "Upward"){
+                sortOrder = "ascendente";
+            } else {
+                sortOrder = "descendente";
+            }
+        }
+        showPokemon(sortData(currentPokemon, sortBy, sortOrder));
+        
+        console.log(e.innerText);
+    })
+})
+
+let regionBtns = document.querySelectorAll(".regionBtn");
 regionBtns.forEach(e => {
     e.addEventListener("click", () => {
         showPokemon(filterData(currentPokemon, e.innerText.toLowerCase()));
         console.log(e.innerText.toLowerCase());
     });
 });
-let typeBtns = document.querySelectorAll(".typeBtn");
 
+let typeBtns = document.querySelectorAll(".typeBtn");
 typeBtns.forEach(e => {
     e.addEventListener("click", () => {
         showPokemon(filterData(currentPokemon, e.innerText.toLowerCase()));
         console.log(filterData(currentPokemon, e.innerText.toLowerCase()));
     });
 });
+let ordenar = data.pokemon.sort(function (a, b) {
+    if (a.name > b.name) {
+        return 1;
+    }
+    if (a.name < b.name) {
+        return -1;
+    }
+    return 0;
+});
+sortData(data.pokemon, "name");
+console.log(sortData(data.pokemon, "name", "ascendente"));
+
+
 
 
 

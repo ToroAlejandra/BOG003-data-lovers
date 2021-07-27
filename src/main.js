@@ -17,6 +17,7 @@ const showPokemon = (currentPokemon) => {
         //Se establece el atributo para el estilo de los div
         containerBox.setAttribute("class", "containerCard");
 
+
         let boxCard = document.createElement("div");
         boxCard.setAttribute("class", "boxPokemon");
         let whiteBoxCard = document.createElement("div");
@@ -57,12 +58,14 @@ const showPokemon = (currentPokemon) => {
 
         typeBox.setAttribute("class", "typeBox-Img");
 
+
         let tableStats = document.createElement("div");
         let titleStats = document.createElement("div");
         let titleCp = document.createElement("h4");
         let titleAttack = document.createElement("h4");
         let titleDefense = document.createElement("h4");
         let titleStamina = document.createElement("h4");
+
 
         let numStats = document.createElement("div");
 
@@ -71,9 +74,11 @@ const showPokemon = (currentPokemon) => {
         let numDefense = document.createElement("h5");
         let numStamina = document.createElement("h5");
 
+
         tableStats.setAttribute("class", "stats-Data");
         titleStats.setAttribute("class", "title-stats");
         numStats.setAttribute("class", "num-stats");
+
 
         titleCp.textContent = "CP";
         titleAttack.textContent = "Attack";
@@ -87,6 +92,7 @@ const showPokemon = (currentPokemon) => {
 
         tableStats.appendChild(titleStats);
         tableStats.appendChild(numStats);
+
 
         titleStats.appendChild(titleCp);
         titleStats.appendChild(titleAttack);
@@ -111,12 +117,14 @@ const showPokemon = (currentPokemon) => {
         imgBoxBack.setAttribute("class", "image-Pokemon");
         imgPokemonBack.src = element.img;
 
+
         imgBoxBack.appendChild(imgPokemonBack);
         boxBack.appendChild(imgBoxBack);
 
         let whiteBoxCardBack = document.createElement("div");
         whiteBoxCardBack.setAttribute("class", "white-Box");
         boxBack.appendChild(whiteBoxCardBack);
+
 
         let heightBox = document.createElement("div");
         heightBox.setAttribute("class", "blueBox");
@@ -147,7 +155,6 @@ const showPokemon = (currentPokemon) => {
         resistantBox.setAttribute("class", "blueBox");
         let resistantPokemon = document.createElement("div");
 
-
         resistantPokemon.setAttribute("class", "resistant-pokemon");
         resistantBox.appendChild(resistantPokemon);
         boxBack.appendChild(titleResistant);
@@ -157,10 +164,12 @@ const showPokemon = (currentPokemon) => {
         let weaknessesBox = document.createElement("div");
         weaknessesBox.setAttribute("class", "blueBox");
 
+
         let titleWeaknesses = document.createElement("h4");
         titleWeaknesses.setAttribute("class", "title-back");
         titleWeaknesses.textContent = "Weaknesses";
         let weaknessesPokemon = document.createElement("div");
+
 
         weaknessesPokemon.setAttribute("class", "weaknesses-pokemon");
         weaknessesBox.appendChild(weaknessesPokemon);
@@ -173,14 +182,17 @@ const showPokemon = (currentPokemon) => {
         element.resistant.forEach((e) => {
             let resistantImage = document.createElement("img");
             resistantImage.src = "img/" + e + ".webp";
+
             // Se deja la misma clase de la imagen del tipo
             resistantImage.setAttribute("class", "typeImg");
             resistantPokemon.appendChild(resistantImage);
         });
 
+
         element.weaknesses.forEach((e) => {
             let weaknessesImage = document.createElement("img");
             weaknessesImage.src = "img/" + e + ".webp";
+
             // Se deja la misma clase de la imagen del tipo
             weaknessesImage.setAttribute("class", "typeImg");
             weaknessesPokemon.appendChild(weaknessesImage);
@@ -190,6 +202,7 @@ const showPokemon = (currentPokemon) => {
         box.appendChild(nameBox);
         box.appendChild(typeBox);
         box.appendChild(tableStats);
+
 
         flipCardInner.appendChild(box);
         flipCardInner.appendChild(boxBack);
@@ -425,10 +438,5 @@ let ordenar = data.pokemon.sort(function (a, b) {
 });
 sortData(data.pokemon, "name");
 console.log(sortData(data.pokemon, "name", "ascendente"));
-
-
-
-
-
 
 

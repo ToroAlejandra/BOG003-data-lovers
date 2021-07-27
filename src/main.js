@@ -1,4 +1,4 @@
-import { filterData, sortData } from './data.js';
+import { filterData } from './data.js';
 // import data from './data/lol/lol.js';
 import data from './data/pokemon/pokemon.js';
 // import data from './data/rickandmorty/rickandmorty.js';
@@ -7,8 +7,13 @@ import data from './data/pokemon/pokemon.js';
 
 let currentPokemon = data.pokemon;
 
+let container = document.createElement("div");
+container.setAttribute("id", "container");
+document.body.appendChild(container);
+
 const showPokemon = (currentPokemon) => {
-    document.getElementById("container").textContent = "";
+    //document.getElementById("container").textContent = "";
+    container.textContent = "";
 
     currentPokemon.forEach((element) => {
 
@@ -213,7 +218,6 @@ const showPokemon = (currentPokemon) => {
         containerBox.appendChild(flipCard);
     });
 };
-
 let sidenav = document.createElement("div");
 sidenav.setAttribute("class", "sidenav");
 
@@ -255,6 +259,7 @@ caretDownFilter.setAttribute("class", "fa fa-caret-down");
 
 let divBtnRegion = document.createElement("div");
 divBtnRegion.setAttribute("class", "div-btn-region");
+
 let btnRegion = document.createElement("button");
 btnRegion.setAttribute("class", "dropdown-btn");
 btnRegion.textContent = "Region";
@@ -365,7 +370,6 @@ divBtnRegion.appendChild(caretDown);
 divBtnType.appendChild(btnType);
 divBtnType.appendChild(caretDownType);
 
-
 dropdownContainer.appendChild(dropdownKanto);
 dropdownContainer.appendChild(dropdownJohto);
 dropdownContainerType.appendChild(dropdownBug);
@@ -399,6 +403,7 @@ divFilter.appendChild(caretDownFilter);
 sidenav.appendChild(dropdownContainerSort);
 sidenav.appendChild(divFilter);
 sidenav.appendChild(divBtnRegion);
+
 sidenav.appendChild(dropdownContainer);
 sidenav.appendChild(divBtnType);
 sidenav.appendChild(dropdownContainerType);
@@ -487,30 +492,26 @@ sortBtns.forEach(e => {
 })
 
 let regionBtns = document.querySelectorAll(".regionBtn");
+
 regionBtns.forEach(e => {
     e.addEventListener("click", () => {
         showPokemon(filterData(currentPokemon, e.innerText.toLowerCase()));
         console.log(e.innerText.toLowerCase());
     });
 });
-
 let typeBtns = document.querySelectorAll(".typeBtn");
+
 typeBtns.forEach(e => {
     e.addEventListener("click", () => {
         showPokemon(filterData(currentPokemon, e.innerText.toLowerCase()));
         console.log(filterData(currentPokemon, e.innerText.toLowerCase()));
     });
 });
-let ordenar = data.pokemon.sort(function (a, b) {
-    if (a.name > b.name) {
-        return 1;
-    }
-    if (a.name < b.name) {
-        return -1;
-    }
-    return 0;
-});
-sortData(data.pokemon, "name");
-console.log(sortData(data.pokemon, "name", "ascendente"));
 
 
+//funcionQuePintaPokemon(filterData(data.pokemon, '{"type": [    "grass",    "poison"  ]}'));
+
+//fetch
+//promesas
+
+console.log(data.pokemon.sort(()));

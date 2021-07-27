@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   flex-flow: row wrap;
+  margin-left: 150px;
 }
 .box-Content {
   display:flex;
@@ -149,10 +150,8 @@ text-align: center;
   font-weight: bolder;
   color: white;
 }
-
 .sidenav {
   height: 100%;
-  /*width: 0;*/
   position: fixed;
   z-index: 3;
   top: 0;
@@ -160,21 +159,83 @@ text-align: center;
   background-color: #111;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 12px;
+  padding-right: 5px;
 }
-.sidenav button {
-  padding: 8px 8px 8px 32px;
+.close-sidenav {
+  background-image: url("img/baseline_sort_white_24dp.png") ;
+  width: 20px;
+  height: 20px;
+}
+.active {
+  background-color: green;
+  color: white;
+}
+.dropdown-container-filter {
+  display: flex;
+}
+.sidenav button, .dropdown-container-sort, .dropdown-container-filter, .dropdown-container{
+  padding: 3px 6px 6px 18px;
   text-decoration: none;
-  font-size: 25px;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: bolder;
   color: #818181;
   display: block;
   transition: 0.3s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
 }
-.sidenav button:hover {
-  color: #f1f1f1;
+.sidenav button:hover, .dropdown-container-sort:hover, .dropdown-container:hover{
+  color: #f1f1f1; 
 }
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.div-sort, .div-filter, .div-btn-region, .div-btn-type {
+  display: flex;
+  align-items: center;
+}
+.div-btn-region, .div-btn-type{
+  padding-left: 10px;
+}
+.fa-caret-down {
+    /*content: " " url("img/angle-double-down-solid.svg");*/
+    height: 24px;
+    width: 30px;
+    background-image: url("img/baseline_sort_white_24dp.png") ;
+  }
+  
+/*.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}*/
+
+
 @media screen and (max-width: 768px){
   .white-Box{
     background-color: red !important;
   }
 }
+
+/*.btn-sort {
+
+}*/

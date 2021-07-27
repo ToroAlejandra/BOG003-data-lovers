@@ -217,6 +217,9 @@ const showPokemon = (currentPokemon) => {
 let sidenav = document.createElement("div");
 sidenav.setAttribute("class", "sidenav");
 
+let divSort = document.createElement("div");
+divSort.setAttribute("class", "div-sort");
+
 let btnSort = document.createElement("button");
 btnSort.setAttribute("class", "btn-sort");
 btnSort.textContent = "Sort";
@@ -241,11 +244,17 @@ dropdownDown.setAttribute("id", "sortDown");
 dropdownDown.setAttribute("class", "sort");
 dropdownDown.textContent = "Downward";
 
+let divFilter = document.createElement("div");
+divFilter.setAttribute("class", "div-filter");
 let btnFilter = document.createElement("button");
 btnFilter.setAttribute("class", "btn-Filter");
 btnFilter.textContent = "Filter";
 let caretDownFilter = document.createElement("i");
 caretDownFilter.setAttribute("class", "fa fa-caret-down");
+
+
+let divBtnRegion = document.createElement("div");
+divBtnRegion.setAttribute("class", "div-btn-region");
 let btnRegion = document.createElement("button");
 btnRegion.setAttribute("class", "dropdown-btn");
 btnRegion.textContent = "Region";
@@ -262,6 +271,8 @@ dropdownJohto.setAttribute("id", "filterJohto");
 dropdownJohto.setAttribute("class", "regionBtn");
 dropdownJohto.textContent = "Johto";
 
+let divBtnType = document.createElement("div");
+divBtnType.setAttribute("class", "div-btn-type");
 let dropdownContainerType = document.createElement("div");
 dropdownContainerType.setAttribute("class", "dropdown-container");
 let btnType = document.createElement("button");
@@ -348,6 +359,13 @@ dropdownContainerSort.appendChild(dropdownZA);
 dropdownContainerSort.appendChild(dropdownUp);
 dropdownContainerSort.appendChild(dropdownDown);
 
+divBtnRegion.appendChild(btnRegion);
+divBtnRegion.appendChild(caretDown);
+
+divBtnType.appendChild(btnType);
+divBtnType.appendChild(caretDownType);
+
+
 dropdownContainer.appendChild(dropdownKanto);
 dropdownContainer.appendChild(dropdownJohto);
 dropdownContainerType.appendChild(dropdownBug);
@@ -369,19 +387,75 @@ dropdownContainerType.appendChild(dropdownRock);
 dropdownContainerType.appendChild(dropdownSteel);
 dropdownContainerType.appendChild(dropdownWater);
 
-btnSort.appendChild(caretDownSort);
-sidenav.appendChild(btnSort);
-btnFilter.appendChild(caretDownFilter);
-btnRegion.appendChild(caretDown);
-btnType.appendChild(caretDownType);
+let closeSidenav = document.createElement("div");
+closeSidenav.setAttribute("class", "close-sidenav");
+
+divSort.appendChild(btnSort);
+divSort.appendChild(caretDownSort);
+sidenav.appendChild(closeSidenav);
+sidenav.appendChild(divSort);
+divFilter.appendChild(btnFilter);
+divFilter.appendChild(caretDownFilter);
 sidenav.appendChild(dropdownContainerSort);
-sidenav.appendChild(btnFilter);
-sidenav.appendChild(btnRegion);
+sidenav.appendChild(divFilter);
+sidenav.appendChild(divBtnRegion);
 sidenav.appendChild(dropdownContainer);
-sidenav.appendChild(btnType);
+sidenav.appendChild(divBtnType);
 sidenav.appendChild(dropdownContainerType);
 
 document.body.appendChild(sidenav);
+
+closeSidenav.addEventListener("click", function (){
+    if (sidenav.style.width === "40px") {
+        sidenav.style.width = "150px";
+        document.getElementById("container").style.marginLeft = "150px";
+    }else {
+        sidenav.style.width = "40px";
+        document.getElementById("container").style.marginLeft = "40px";
+    }
+});
+    
+  
+
+divSort.addEventListener("click", function () {
+    divSort.classList.toggle("active");
+    if (dropdownContainerSort.style.display === "block") {
+        dropdownContainerSort.style.display = "none";
+    } else {
+        dropdownContainerSort.style.display = "block";
+    }
+})
+divFilter.addEventListener("click", function () {
+    divFilter.classList.toggle("active");
+    if (btnRegion.style.display === "block") {
+        btnRegion.style.display = "none";
+        caretDown.style.display = "none";
+        dropdownContainer.style.display = "none";
+        btnType.style.display = "none";
+        caretDownType.style.display = "none";
+        dropdownContainerType.style.display = "none";
+    } else {
+        btnRegion.style.display = "block";
+        caretDown.style.display = "block";
+        btnType.style.display = "block";
+        caretDownType.style.display = "block";
+    }
+});
+divBtnRegion.addEventListener("click", function () {
+    if (dropdownContainer.style.display === "block") {
+        dropdownContainer.style.display = "none";
+    } else {
+        dropdownContainer.style.display = "block";
+    }
+});
+divBtnType.addEventListener("click", function () {
+    if (dropdownContainerType.style.display === "block") {
+        dropdownContainerType.style.display = "none";
+    } else {
+        dropdownContainerType.style.display = "block";
+    }
+});
+
 
 showPokemon(currentPokemon);
 
@@ -396,18 +470,18 @@ sortBtns.forEach(e => {
                 sortOrder = "ascendente";
             } else {
                 sortOrder = "descendente";
-            }   
+            }
         }
-        if (e.innerText === "Upward" || e.innerText === "Downward"){
+        if (e.innerText === "Upward" || e.innerText === "Downward") {
             sortBy = "num";
-            if (e.innerText === "Upward"){
+            if (e.innerText === "Upward") {
                 sortOrder = "ascendente";
             } else {
                 sortOrder = "descendente";
             }
         }
         showPokemon(sortData(currentPokemon, sortBy, sortOrder));
-        
+
         console.log(e.innerText);
     })
 })

@@ -154,6 +154,7 @@ text-align: center;
   height: 100%;
   position: fixed;
   z-index: 3;
+  width: 40px;
   top: 0;
   left: 0;
   background-color: #111;
@@ -163,10 +164,30 @@ text-align: center;
   padding-right: 5px;
 }
 .close-sidenav {
-  background-image: url("img/baseline_sort_white_24dp.png") ;
+  display: inline-block;
+  cursor: pointer;
+  /*background-image: url("img/baseline_close_white_24dp.png") ;
   width: 20px;
-  height: 20px;
+  height: 20px;*/
 }
+.bar-1, .bar-2, .bar-3 {
+  width: 30px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+.change .bar-1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+.change .bar-2 {opacity: 0;}
+
+.change .bar-3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
 .active {
   background-color: green;
   color: white;
@@ -207,13 +228,26 @@ text-align: center;
 .div-btn-region, .div-btn-type{
   padding-left: 10px;
 }
-.fa-caret-down {
-    /*content: " " url("img/angle-double-down-solid.svg");*/
+.div-sort .fa-caret-down {
     height: 24px;
     width: 30px;
-    background-image: url("img/baseline_sort_white_24dp.png") ;
+    background-image: url("img/baseline_swap_vert_white_24dp.png") ;
   }
-  
+.div-filter .fa-caret-down {
+  height: 24px;
+  width: 30px;
+  background-image: url("img/baseline_filter_alt_white_24dp.png") ;
+}
+.div-btn-region .fa-caret-down {
+    height: 24px;
+    width: 30px;
+    background-image: url("img/baseline_landscape_white_24dp.png") ;
+  }
+.div-btn-type .fa-caret-down {
+    height: 24px;
+    width: 30px;
+    background-image: url("img/baseline_catching_pokemon_white_24dp.png") ;
+  }
 /*.fa-caret-down {
   float: right;
   padding-right: 8px;

@@ -482,8 +482,8 @@ sortBtns.forEach(e => {
         showPokemon(sortData(currentPokemon, sortBy, sortOrder));
 
         console.log(e.innerText);
-    })
-})
+    });
+});
 
 let regionBtns = document.querySelectorAll(".regionBtn");
 
@@ -507,5 +507,3 @@ typeBtns.forEach(e => {
 
 //fetch
 //promesas
-
-console.log(data.pokemon.sort(()));

@@ -389,6 +389,15 @@ dropdownContainerType.appendChild(dropdownWater);
 
 let closeSidenav = document.createElement("div");
 closeSidenav.setAttribute("class", "close-sidenav");
+let bar1 = document.createElement("div");
+bar1.setAttribute("class", "bar-1");
+let bar2 = document.createElement("div");
+bar2.setAttribute("class", "bar-2");
+let bar3 = document.createElement("div");
+bar3.setAttribute("class", "bar-3");
+closeSidenav.appendChild(bar1);
+closeSidenav.appendChild(bar2);
+closeSidenav.appendChild(bar3);
 
 divSort.appendChild(btnSort);
 divSort.appendChild(caretDownSort);
@@ -406,17 +415,19 @@ sidenav.appendChild(dropdownContainerType);
 document.body.appendChild(sidenav);
 
 closeSidenav.addEventListener("click", function (){
+    
     if (sidenav.style.width === "40px") {
         sidenav.style.width = "150px";
         document.getElementById("container").style.marginLeft = "150px";
     }else {
         sidenav.style.width = "40px";
         document.getElementById("container").style.marginLeft = "40px";
+        closeSidenav.classList.toggle("change");
     }
-});
     
-  
+});
 
+    
 divSort.addEventListener("click", function () {
     divSort.classList.toggle("active");
     if (dropdownContainerSort.style.display === "block") {
@@ -501,7 +512,7 @@ typeBtns.forEach(e => {
         console.log(filterData(currentPokemon, e.innerText.toLowerCase()));
     });
 });
-let ordenar = data.pokemon.sort(function (a, b) {
+/*let ordenar = data.pokemon.sort(function (a, b) {
     if (a.name > b.name) {
         return 1;
     }
@@ -511,6 +522,6 @@ let ordenar = data.pokemon.sort(function (a, b) {
     return 0;
 });
 sortData(data.pokemon, "name");
-console.log(sortData(data.pokemon, "name", "ascendente"));
+console.log(sortData(data.pokemon, "name", "ascendente"));*/
 
 

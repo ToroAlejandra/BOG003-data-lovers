@@ -7,8 +7,13 @@ import data from './data/pokemon/pokemon.js';
 
 let currentPokemon = data.pokemon;
 
+let container = document.createElement("div");
+container.setAttribute("id", "container");
+document.body.appendChild(container);
+
 const showPokemon = (currentPokemon) => {
-    document.getElementById("container").textContent = "";
+    //document.getElementById("container").textContent = "";
+    container.textContent = "";
 
     currentPokemon.forEach((element) => {
 
@@ -254,6 +259,7 @@ caretDownFilter.setAttribute("class", "fa fa-caret-down");
 
 let divBtnRegion = document.createElement("div");
 divBtnRegion.setAttribute("class", "div-btn-region");
+
 let btnRegion = document.createElement("button");
 btnRegion.setAttribute("class", "dropdown-btn");
 btnRegion.textContent = "Region";
@@ -364,7 +370,6 @@ divBtnRegion.appendChild(caretDown);
 divBtnType.appendChild(btnType);
 divBtnType.appendChild(caretDownType);
 
-
 dropdownContainer.appendChild(dropdownKanto);
 dropdownContainer.appendChild(dropdownJohto);
 dropdownContainerType.appendChild(dropdownBug);
@@ -398,6 +403,7 @@ divFilter.appendChild(caretDownFilter);
 sidenav.appendChild(dropdownContainerSort);
 sidenav.appendChild(divFilter);
 sidenav.appendChild(divBtnRegion);
+
 sidenav.appendChild(dropdownContainer);
 sidenav.appendChild(divBtnType);
 sidenav.appendChild(dropdownContainerType);

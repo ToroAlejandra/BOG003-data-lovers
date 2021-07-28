@@ -513,5 +513,3 @@ typeBtns.forEach(e => {
 
 //fetch
 //promesas
-
-console.log(data.pokemon.sort(()));

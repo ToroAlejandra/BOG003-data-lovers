@@ -35,7 +35,7 @@ export const sortData = (data, sortBy, sortOrder) => {
     case "descendente":
       actualPokemon = sortPokemon.reverse();
       break;
-    default:
+    default: actualPokemon = data;
       break;
   }
   return actualPokemon;

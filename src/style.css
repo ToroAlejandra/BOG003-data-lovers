@@ -192,6 +192,9 @@ text-align: center;
   margin: 2px;
   padding: 0px;
 }
+.modal-empty-type {
+  border: solid blueviolet;
+}
 .container-sidenav {
   background-color: rgba(8,34,78,0.9);
   margin-top: 67px;
@@ -274,11 +277,11 @@ text-align: center;
   font-size: 36px;
   margin-left: 50px;
 }
-.div-sort, .div-filter, .div-btn-region, .div-btn-type {
+.div-sort, .div-filter, .div-btn-region, .div-btn-type, .div-btn-all{
   display: flex;
   align-items: center;
 }
-.div-btn-region, .div-btn-type{
+.div-btn-region, .div-btn-type, .div-btn-all{
   padding-left: 10px;
 }
 .div-sort .fa-caret-down {
@@ -290,6 +293,11 @@ text-align: center;
   height: 24px;
   width: 30px;
   background-image: url("img/baseline_filter_alt_white_24dp.png") ;
+}
+.div-btn-all .fa-caret-down {
+  height: 24px;
+  width: 30px;
+  background-image: url("img/baseline_apps_white_24dp.png") ;
 }
 .div-btn-region .fa-caret-down {
     height: 24px;

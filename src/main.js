@@ -1,27 +1,19 @@
-import { filterData } from './data.js';
+import { filterData, sortData } from './data.js';
 // import data from './data/lol/lol.js';
 import data from './data/pokemon/pokemon.js';
 // import data from './data/rickandmorty/rickandmorty.js';
 
-//console.log(filterData(data.pokemon, `generation['name']:"Kanto"`));
 
 let currentPokemon = data.pokemon;
 
-let container = document.createElement("div");
-container.setAttribute("id", "container");
-document.body.appendChild(container);
+let containerBox = document.getElementById("container");
+//Se establece el atributo para el estilo de los div
+containerBox.setAttribute("class", "containerCard");
 
 const showPokemon = (currentPokemon) => {
-    //document.getElementById("container").textContent = "";
-    container.textContent = "";
+    containerBox.innerHTML = "";
 
     currentPokemon.forEach((element) => {
-
-        let containerBox = document.getElementById("container");
-
-        //Se establece el atributo para el estilo de los div
-        containerBox.setAttribute("class", "containerCard");
-
 
         let boxCard = document.createElement("div");
         boxCard.setAttribute("class", "boxPokemon");
@@ -62,14 +54,12 @@ const showPokemon = (currentPokemon) => {
 
         typeBox.setAttribute("class", "typeBox-Img");
 
-
         let tableStats = document.createElement("div");
         let titleStats = document.createElement("div");
         let titleCp = document.createElement("h4");
         let titleAttack = document.createElement("h4");
         let titleDefense = document.createElement("h4");
         let titleStamina = document.createElement("h4");
-
 
         let numStats = document.createElement("div");
 
@@ -78,11 +68,9 @@ const showPokemon = (currentPokemon) => {
         let numDefense = document.createElement("h5");
         let numStamina = document.createElement("h5");
 
-
         tableStats.setAttribute("class", "stats-Data");
         titleStats.setAttribute("class", "title-stats");
         numStats.setAttribute("class", "num-stats");
-
 
         titleCp.textContent = "CP";
         titleAttack.textContent = "Attack";
@@ -94,9 +82,9 @@ const showPokemon = (currentPokemon) => {
         numDefense.textContent = element.stats['base-defense'];
         numStamina.textContent = element.stats['base-stamina'];
 
+        //Contiene la tabla de la parte inicial de la tarjeta, muestra CP-ataque-defensa-
         tableStats.appendChild(titleStats);
         tableStats.appendChild(numStats);
-
 
         titleStats.appendChild(titleCp);
         titleStats.appendChild(titleAttack);
@@ -121,14 +109,12 @@ const showPokemon = (currentPokemon) => {
         imgBoxBack.setAttribute("class", "image-Pokemon");
         imgPokemonBack.src = element.img;
 
-
         imgBoxBack.appendChild(imgPokemonBack);
         boxBack.appendChild(imgBoxBack);
 
         let whiteBoxCardBack = document.createElement("div");
         whiteBoxCardBack.setAttribute("class", "white-Box");
         boxBack.appendChild(whiteBoxCardBack);
-
 
         let heightBox = document.createElement("div");
         heightBox.setAttribute("class", "blueBox");
@@ -160,6 +146,7 @@ const showPokemon = (currentPokemon) => {
         boxBack.appendChild(titleWeight);
         boxBack.appendChild(weightBox);
 
+        // Div de las fortalezas de la parte de átras de la tarjeta
         let titleResistant = document.createElement("h4");
         titleResistant.setAttribute("class", "title-back");
         titleResistant.textContent = "Resistant";
@@ -172,16 +159,14 @@ const showPokemon = (currentPokemon) => {
         boxBack.appendChild(titleResistant);
         boxBack.appendChild(resistantBox);
 
-
+        // Div de las debilidades de la parte de átras de la tarjeta
         let weaknessesBox = document.createElement("div");
         weaknessesBox.setAttribute("class", "blueBox");
-
 
         let titleWeaknesses = document.createElement("h4");
         titleWeaknesses.setAttribute("class", "title-back");
         titleWeaknesses.textContent = "Weaknesses";
         let weaknessesPokemon = document.createElement("div");
-
 
         weaknessesPokemon.setAttribute("class", "weaknesses-pokemon");
         weaknessesBox.appendChild(weaknessesPokemon);
@@ -200,7 +185,7 @@ const showPokemon = (currentPokemon) => {
             resistantPokemon.appendChild(resistantImage);
         });
 
-
+        //Se traen los inconos de las debilidades
         element.weaknesses.forEach((e) => {
             let weaknessesImage = document.createElement("img");
             weaknessesImage.src = "img/" + e + ".webp";
@@ -209,25 +194,28 @@ const showPokemon = (currentPokemon) => {
             weaknessesImage.setAttribute("class", "typeImg");
             weaknessesPokemon.appendChild(weaknessesImage);
         });
-        //Se toma
         box.appendChild(boxCard);
         box.appendChild(nameBox);
         box.appendChild(typeBox);
         box.appendChild(tableStats);
 
-
         flipCardInner.appendChild(box);
         flipCardInner.appendChild(boxBack);
 
-
         flipCard.appendChild(flipCardInner);
-
         containerBox.appendChild(flipCard);
     });
 };
+// Termina función showPokemon
+
+// Se crea el menú lateral que contiene los botones de filtrar y ordenar
+let containerSidenav = document.createElement("div");
+containerSidenav.setAttribute("class", "container-sidenav");
+
 let sidenav = document.createElement("div");
 sidenav.setAttribute("class", "sidenav");
 
+//Botones sort para ordenar por nombre y número
 let divSort = document.createElement("div");
 divSort.setAttribute("class", "div-sort");
 
@@ -255,6 +243,7 @@ dropdownDown.setAttribute("id", "sortDown");
 dropdownDown.setAttribute("class", "sort");
 dropdownDown.textContent = "Downward";
 
+// Botones filter para filtrar por región y tipo
 let divFilter = document.createElement("div");
 divFilter.setAttribute("class", "div-filter");
 let btnFilter = document.createElement("button");
@@ -262,7 +251,6 @@ btnFilter.setAttribute("class", "btn-Filter");
 btnFilter.textContent = "Filter";
 let caretDownFilter = document.createElement("i");
 caretDownFilter.setAttribute("class", "fa fa-caret-down");
-
 
 let divBtnRegion = document.createElement("div");
 divBtnRegion.setAttribute("class", "div-btn-region");
@@ -293,6 +281,7 @@ btnType.textContent = "Type";
 let caretDownType = document.createElement("i");
 caretDownType.setAttribute("class", "fa fa-caret-down");
 
+//Botones para filtrar cada uno de los tipos
 let dropdownBug = document.createElement("button");
 dropdownBug.setAttribute("id", "filterBug");
 dropdownBug.setAttribute("class", "typeBtn");
@@ -424,7 +413,8 @@ sidenav.appendChild(dropdownContainer);
 sidenav.appendChild(divBtnType);
 sidenav.appendChild(dropdownContainerType);
 
-document.body.appendChild(sidenav);
+containerSidenav.appendChild(sidenav);
+document.body.appendChild(containerSidenav);
 
 closeSidenav.addEventListener("click", function () {
     if (sidenav.style.width === "40px") {
@@ -437,7 +427,7 @@ closeSidenav.addEventListener("click", function () {
         closeSidenav.removeAttribute("class", "change");
     }
 });
-
+// Botones del menú lateral 
 divSort.addEventListener("click", function () {
     divSort.classList.toggle("active");
     if (dropdownContainerSort.style.display === "block") {
@@ -445,7 +435,7 @@ divSort.addEventListener("click", function () {
     } else {
         dropdownContainerSort.style.display = "block";
     }
-})
+});
 divFilter.addEventListener("click", function () {
     divFilter.classList.toggle("active");
     if (btnRegion.style.display === "block") {
@@ -477,9 +467,8 @@ divBtnType.addEventListener("click", function () {
     }
 });
 
-
 showPokemon(currentPokemon);
-
+// Botones que ordenan la data de forma ascendente y descendente
 let sortBtns = document.querySelectorAll(".sort");
 sortBtns.forEach(e => {
     e.addEventListener("click", () => {
@@ -501,28 +490,34 @@ sortBtns.forEach(e => {
                 sortOrder = "descendente";
             }
         }
-        showPokemon(sortData(currentPokemon, sortBy, sortOrder));
+        currentPokemon = sortData(currentPokemon, sortBy, sortOrder);
+        showPokemon(currentPokemon);
 
-        console.log(e.innerText);
-    })
-})
+
+        console.log(e.innerText, " ", sortBy + " " + sortOrder);
+        console.log(currentPokemon);
+    });
+});
 
 let regionBtns = document.querySelectorAll(".regionBtn");
 
 regionBtns.forEach(e => {
     e.addEventListener("click", () => {
-        showPokemon(filterData(currentPokemon, e.innerText.toLowerCase()));
-        console.log(e.innerText.toLowerCase());
+        currentPokemon = filterData(currentPokemon, e.innerText.toLowerCase());
+        showPokemon(currentPokemon);
     });
 });
+
 let typeBtns = document.querySelectorAll(".typeBtn");
 
 typeBtns.forEach(e => {
     e.addEventListener("click", () => {
-        showPokemon(filterData(currentPokemon, e.innerText.toLowerCase()));
-        console.log(filterData(currentPokemon, e.innerText.toLowerCase()));
+        currentPokemon = filterData(currentPokemon, e.innerText.toLowerCase());
+        showPokemon(currentPokemon);
     });
 });
 
+let initialData = [{ name: "muk", num: "089", generation: { name: "kanto" }, type: ["poison"] }, { name: "granbull", num: "210", generation: { name: "johto" }, type: ["fairy"] }, { name: "charizard", num: "006", generation: { name: "kanto" }, type: ["fire", "flying"] }, { name: "mr. mime", num: "122", generation: { name: "kanto" }, type: ["psychic"] }, { name: "tyranitar", num: "248", generation: { name: "johto" }, type: ["rock", "dark"] }];
 
+console.log(sortData(initialData, "kanto"));
 

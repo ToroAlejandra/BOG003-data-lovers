@@ -192,21 +192,30 @@ text-align: center;
   margin: 2px;
   padding: 0px;
 }
-.sidenav {
+.container-sidenav {
+  background-color: rgba(8,34,78,0.9);
   margin-top: 67px;
   height: 100%;
   position: fixed;
   z-index: 3;
-  width: 40px;
   top: 0;
   left: 0;
-  background-color: rgba(8,34,78,0.9);
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 12px;
   padding-right: 5px;
   padding-left: 7px;
 }
+.sidenav {
+  height: 80%;
+  width: 40px;
+}
+.container-sidenav::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+}
+
+
 .close-sidenav {
   display: inline-block;
   cursor: pointer;
@@ -231,7 +240,6 @@ text-align: center;
   -webkit-transform: rotate(45deg) translate(-8px, -7.5px);
   transform: rotate(45deg) translate(-8px, -7.5px);
 }
-
 .active {
   background-color: #5c5f86;
   color: white;
@@ -293,6 +301,9 @@ text-align: center;
     width: 30px;
     background-image: url("img/baseline_catching_pokemon_white_24dp.png") ;
   }
+#filterWater {
+  padding-bottom: 100px;
+}
 
 
 

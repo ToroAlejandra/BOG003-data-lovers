@@ -208,7 +208,7 @@ const showPokemon = (currentPokemon) => {
 };
 // Termina función showPokemon
 
-// Se crea el menú lateral que contiene los botones de filtrar y ordenar
+// Sidenav - Se crea el menú lateral que contiene los botones de filtrar y ordenar
 let containerSidenav = document.createElement("div");
 containerSidenav.setAttribute("class", "container-sidenav");
 
@@ -251,6 +251,14 @@ btnFilter.setAttribute("class", "btn-Filter");
 btnFilter.textContent = "Filter";
 let caretDownFilter = document.createElement("i");
 caretDownFilter.setAttribute("class", "fa fa-caret-down");
+
+let divBtnAll = document.createElement("div");
+divBtnAll.setAttribute("class", "div-btn-all");
+let btnAll = document.createElement("button");
+btnAll.setAttribute("class", "dropdown-btn");
+btnAll.textContent = "All";
+let caretDownAll = document.createElement("i");
+caretDownAll.setAttribute("class", "fa fa-caret-down");
 
 let divBtnRegion = document.createElement("div");
 divBtnRegion.setAttribute("class", "div-btn-region");
@@ -360,6 +368,9 @@ dropdownContainerSort.appendChild(dropdownZA);
 dropdownContainerSort.appendChild(dropdownUp);
 dropdownContainerSort.appendChild(dropdownDown);
 
+divBtnAll.appendChild(btnAll);
+divBtnAll.appendChild(caretDownAll);
+
 divBtnRegion.appendChild(btnRegion);
 divBtnRegion.appendChild(caretDown);
 
@@ -407,6 +418,7 @@ divFilter.appendChild(btnFilter);
 divFilter.appendChild(caretDownFilter);
 sidenav.appendChild(dropdownContainerSort);
 sidenav.appendChild(divFilter);
+sidenav.appendChild(divBtnAll);
 sidenav.appendChild(divBtnRegion);
 
 sidenav.appendChild(dropdownContainer);
@@ -415,6 +427,13 @@ sidenav.appendChild(dropdownContainerType);
 
 containerSidenav.appendChild(sidenav);
 document.body.appendChild(containerSidenav);
+
+//Se crea el modal que sale cuando no hay pokemons para filtrar
+let modalEmptyType = document.createElement("div");
+modalEmptyType.setAttribute("class", "modal-empty-type");
+modalEmptyType.textContent = "Sorry, no pokemon to show";
+
+containerBox.appendChild(modalEmptyType);
 
 closeSidenav.addEventListener("click", function () {
     if (sidenav.style.width === "40px") {
@@ -428,6 +447,7 @@ closeSidenav.addEventListener("click", function () {
     }
 });
 // Botones del menú lateral 
+
 divSort.addEventListener("click", function () {
     divSort.classList.toggle("active");
     if (dropdownContainerSort.style.display === "block") {
@@ -439,6 +459,8 @@ divSort.addEventListener("click", function () {
 divFilter.addEventListener("click", function () {
     divFilter.classList.toggle("active");
     if (btnRegion.style.display === "block") {
+        btnAll.style.display = "none";
+        caretDownAll.style.display = "none";
         btnRegion.style.display = "none";
         caretDown.style.display = "none";
         dropdownContainer.style.display = "none";
@@ -446,6 +468,8 @@ divFilter.addEventListener("click", function () {
         caretDownType.style.display = "none";
         dropdownContainerType.style.display = "none";
     } else {
+        btnAll.style.display = "block";
+        caretDownAll.style.display = "block";
         btnRegion.style.display = "block";
         caretDown.style.display = "block";
         btnType.style.display = "block";
@@ -466,6 +490,12 @@ divBtnType.addEventListener("click", function () {
         dropdownContainerType.style.display = "block";
     }
 });
+divBtnAll.addEventListener("click", () => {
+    currentPokemon = data.pokemon;
+    showPokemon(currentPokemon);
+});
+
+
 
 showPokemon(currentPokemon);
 // Botones que ordenan la data de forma ascendente y descendente
@@ -492,10 +522,6 @@ sortBtns.forEach(e => {
         }
         currentPokemon = sortData(currentPokemon, sortBy, sortOrder);
         showPokemon(currentPokemon);
-
-
-        console.log(e.innerText, " ", sortBy + " " + sortOrder);
-        console.log(currentPokemon);
     });
 });
 
@@ -510,14 +536,28 @@ regionBtns.forEach(e => {
 
 let typeBtns = document.querySelectorAll(".typeBtn");
 
+
 typeBtns.forEach(e => {
     e.addEventListener("click", () => {
         currentPokemon = filterData(currentPokemon, e.innerText.toLowerCase());
         showPokemon(currentPokemon);
+
+        let typePokemon = [];
+        currentPokemon.forEach(element => {
+        element.type.forEach(et =>{
+            if (!typePokemon.includes(et)) {
+                typePokemon.push(et);
+            }
+        });
+              
+        });
+        if (typePokemon.length < 2) {
+            console.log("No hay pokemon que mostrar");
+        }
+        
+
     });
+    
 });
 
-let initialData = [{ name: "muk", num: "089", generation: { name: "kanto" }, type: ["poison"] }, { name: "granbull", num: "210", generation: { name: "johto" }, type: ["fairy"] }, { name: "charizard", num: "006", generation: { name: "kanto" }, type: ["fire", "flying"] }, { name: "mr. mime", num: "122", generation: { name: "kanto" }, type: ["psychic"] }, { name: "tyranitar", num: "248", generation: { name: "johto" }, type: ["rock", "dark"] }];
-
-console.log(sortData(initialData, "kanto"));
 

@@ -48,10 +48,9 @@ const showPokemon = (currentPokemon) => {
         namePokemon.setAttribute("class", "name-Style");
         numPokemon.textContent = element.num;
         nameBox.appendChild(numPokemon);
-        namePokemon.textContent = element.name;
+        namePokemon.textContent = element.name.slice(0, 1).toUpperCase() + element.name.slice(1, element.name.length);
         namePokemon.setAttribute("class", "name-Style");
         nameBox.appendChild(namePokemon);
-
 
         let typeBox = document.createElement("div");
         element.type.forEach((e) => {
@@ -135,22 +134,30 @@ const showPokemon = (currentPokemon) => {
         heightBox.setAttribute("class", "blueBox");
         let heightPokemon = document.createElement("div");
         heightPokemon.setAttribute("class", "height-pokemon");
+        let titleHeight = document.createElement("h4");
+        titleHeight.setAttribute("class", "title-height");
+        titleHeight.textContent = "Height";
         let numHeight = document.createElement("h4");
         numHeight.setAttribute("class", "num-height");
         numHeight.textContent = element.size['height'];
         heightPokemon.appendChild(numHeight);
         heightBox.appendChild(heightPokemon);
+        boxBack.appendChild(titleHeight);
         boxBack.appendChild(heightBox);
 
         let weightBox = document.createElement("div");
         weightBox.setAttribute("class", "blueBox");
         let weightPokemon = document.createElement("div");
         weightPokemon.setAttribute("class", "weight-pokemon");
+        let titleWeight = document.createElement("h4");
+        titleWeight.setAttribute("class", "title-weight");
+        titleWeight.textContent = "Weight";
         let numWeight = document.createElement("h4");
         numWeight.setAttribute("class", "num-weight");
         numWeight.textContent = element.size['weight'];
         weightPokemon.appendChild(numWeight);
         weightBox.appendChild(weightPokemon);
+        boxBack.appendChild(titleWeight);
         boxBack.appendChild(weightBox);
 
         let titleResistant = document.createElement("h4");
@@ -403,8 +410,8 @@ closeSidenav.appendChild(bar1);
 closeSidenav.appendChild(bar2);
 closeSidenav.appendChild(bar3);
 
-divSort.appendChild(btnSort);
 divSort.appendChild(caretDownSort);
+divSort.appendChild(btnSort);
 sidenav.appendChild(closeSidenav);
 sidenav.appendChild(divSort);
 divFilter.appendChild(btnFilter);
@@ -419,20 +426,18 @@ sidenav.appendChild(dropdownContainerType);
 
 document.body.appendChild(sidenav);
 
-closeSidenav.addEventListener("click", function (){
-    
+closeSidenav.addEventListener("click", function () {
     if (sidenav.style.width === "40px") {
         sidenav.style.width = "150px";
-        document.getElementById("container").style.marginLeft = "150px";
-    }else {
+        document.getElementById("container").style.marginLeft = "160px";
+        closeSidenav.setAttribute("class", "change");
+    } else {
         sidenav.style.width = "40px";
-        document.getElementById("container").style.marginLeft = "40px";
-        closeSidenav.classList.toggle("change");
+        document.getElementById("container").style.marginLeft = "50px";
+        closeSidenav.removeAttribute("class", "change");
     }
-    
 });
 
-    
 divSort.addEventListener("click", function () {
     divSort.classList.toggle("active");
     if (dropdownContainerSort.style.display === "block") {

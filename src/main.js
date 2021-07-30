@@ -1,4 +1,4 @@
-import { filterData, sortData } from './data.js';
+import { filterData, sortData, computeStats } from './data.js';
 // import data from './data/lol/lol.js';
 import data from './data/pokemon/pokemon.js';
 // import data from './data/rickandmorty/rickandmorty.js';
@@ -207,6 +207,7 @@ const showPokemon = (currentPokemon) => {
     });
 };
 // Termina función showPokemon
+
 
 // Sidenav - Se crea el menú lateral que contiene los botones de filtrar y ordenar
 let containerSidenav = document.createElement("div");
@@ -432,22 +433,39 @@ document.body.appendChild(containerSidenav);
 let modalEmptyType = document.createElement("div");
 modalEmptyType.setAttribute("class", "modal-empty-type");
 modalEmptyType.textContent = "Sorry, no pokemon to show";
+modalEmptyType.style.display = "none";
 
-containerBox.appendChild(modalEmptyType);
+// Botón del modal para mostrar todos los pokemon
+let btnModal = document.createElement("button");
+btnModal.setAttribute("class", "btn-modal");
+btnModal.textContent = "All Pokemon";
 
+modalEmptyType.appendChild(btnModal);
+document.getElementById("modal").appendChild(modalEmptyType);
+
+// Evento para el botón del modal que muestra todos los Pokémon
+btnModal.addEventListener("click", () => {
+    currentPokemon = data.pokemon;
+    modalEmptyType.style.display = "none";
+    showPokemon(currentPokemon);
+});
+
+// Evento para cerrar el menú lateral
 closeSidenav.addEventListener("click", function () {
     if (sidenav.style.width === "40px") {
         sidenav.style.width = "150px";
-        document.getElementById("container").style.marginLeft = "160px";
+        modalEmptyType.style.marginLeft = "80px";
+        document.getElementById("container").style.marginLeft = "170px";
         closeSidenav.setAttribute("class", "change");
     } else {
         sidenav.style.width = "40px";
-        document.getElementById("container").style.marginLeft = "50px";
+        modalEmptyType.style.marginLeft = "30px";
+        document.getElementById("container").style.marginLeft = "60px";
         closeSidenav.removeAttribute("class", "change");
     }
 });
-// Botones del menú lateral 
 
+// Funciones de los Botones del menú lateral, para ocultar las subcategorias de cada uno
 divSort.addEventListener("click", function () {
     divSort.classList.toggle("active");
     if (dropdownContainerSort.style.display === "block") {
@@ -492,10 +510,9 @@ divBtnType.addEventListener("click", function () {
 });
 divBtnAll.addEventListener("click", () => {
     currentPokemon = data.pokemon;
+    modalEmptyType.style.display = "none";
     showPokemon(currentPokemon);
 });
-
-
 
 showPokemon(currentPokemon);
 // Botones que ordenan la data de forma ascendente y descendente
@@ -536,28 +553,25 @@ regionBtns.forEach(e => {
 
 let typeBtns = document.querySelectorAll(".typeBtn");
 
-
 typeBtns.forEach(e => {
     e.addEventListener("click", () => {
         currentPokemon = filterData(currentPokemon, e.innerText.toLowerCase());
         showPokemon(currentPokemon);
-
+        // Se crea la condicion para 
         let typePokemon = [];
         currentPokemon.forEach(element => {
-        element.type.forEach(et =>{
-            if (!typePokemon.includes(et)) {
-                typePokemon.push(et);
-            }
-        });
-              
+            element.type.forEach(et => {
+                if (!typePokemon.includes(et)) {
+                    typePokemon.push(et);
+                }
+            });
         });
         if (typePokemon.length < 2) {
-            console.log("No hay pokemon que mostrar");
+            modalEmptyType.style.display = "flex";
+        } else {
+            modalEmptyType.style.display = "none";
         }
-        
-
+        console.log(typePokemon);
     });
-    
 });
-
-
+//console.log(computeStats(currentPokemon)[1]);

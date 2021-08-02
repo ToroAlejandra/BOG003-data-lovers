@@ -24,35 +24,47 @@
 </header>
 
 <body>
-  <div>
-    <p> Here you will know the Pokemon characteristics of the region of Kanto and Johto, to be a better trainer.</p>
+  <div id="backgroundHome" class="background"></div>
+  <div id="modalWelcome" class="welcome">
+    <h2>Welcome to Pokemon!</h2>
+    <h3>Here you will know the Pokemon characteristics of the region of Kanto and Johto, to be a better trainer.</h3>
   </div>
+  <div id="containerBtnLink" class="container-btn-link">
+    <button id="btnPokedex" class="btn-link-home">Pokétex</button>
+    <button class="btn-link-home">Statistics</button>
+    <button class="btn-link-home" onclick="window.open('https://pokemongolive.com/es/')">Play Pokémon
+      GO</button>
+  </div>
+
   <div id="container"></div>
   <div id="modal" class="modal-dialog"></div>
   <div id="root"></div>
-  <div class="background"></div>
-  <script src="main.js" type="module"></script>
-</body>
-<footer class="style-footer">
-  <div class="footer-content">
-    <p> Made by Diana Buitrago &#38; Jessica Toro</p>
-    <div class="social-network">
-      <button onclick="window.open('https://www.instagram.com/pokemongoapp/')">
-        <img src="img/instagram.png" class="">
-      </button>
-      <button
-        onclick="window.open('https://play.google.com/store/apps/details?id=com.nianticlabs.pokemongo&hl=es_CO&gl=US')">
-        <img src="img/play.png" class="">
-      </button>
-      <button onclick="window.open('https://twitter.com/PokemonGoApp')">
-        <img src="img/twitter.png" class="">
-      </button>
-      <button onclick="window.open('https://www.youtube.com/channel/UCA698bls2pjQyiqP9N-iaeg')">
-        <img src="img/youtube.webp" class="">
-      </button>
-    </div>
-  </div>
 
-</footer>
+
+  <footer class="style-footer">
+    <div class="footer-content">
+      <p> Made by Diana Buitrago &#38; Jessica Toro</p>
+      <div class="social-network">
+        <button onclick="window.open('https://www.instagram.com/pokemongoapp/')">
+          <img src="img/instagram.png" class="">
+        </button>
+        <button
+          onclick="window.open('https://play.google.com/store/apps/details?id=com.nianticlabs.pokemongo&hl=es_CO&gl=US')">
+          <img src="img/play.png" class="">
+        </button>
+        <button onclick="window.open('https://twitter.com/PokemonGoApp')">
+          <img src="img/twitter.png" class="">
+        </button>
+        <button onclick="window.open('https://www.youtube.com/channel/UCA698bls2pjQyiqP9N-iaeg')">
+          <img src="img/youtube.webp" class="">
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js" type="module"></script>
+
+</body>
+
 
 </html>

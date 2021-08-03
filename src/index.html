@@ -1,26 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Pokémon GO - Data Lovers</title>
-    <link href="img/favicon.ico" rel="shortcut icon">
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
-    
-  </head>
-  <header class="style-header">
-    <div class="navbar__logo">
-      <a href="">
-      <img class="image" decoding="async" loading="lazy" src="https://lh3.googleusercontent.com/3TSaKxXGo2wT0lu0AyNUBnkk6wkCC2AzOhJyy3JXIPm-AmZ1k9DSAroWeBUyePswCZSs5lVp3mPF7HzUpY9VPlyOV5eddITONINr3WSqLNLm=e365-w600" alt="Pokémon GO" title="Pokémon GO" width="1860" height="1190">
-      </a>
-      <button id="btnHome" class="btn-home">Home</button>
-      </div>
-  </header>
-  <body>
-    <div id="container"></div>
-    <div id="root"></div>
-    <script src="main.js" type="module"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pokémon GO - Data Lovers</title>
+  <link href="img/favicon.ico" rel="shortcut icon">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+
+</head>
+<header class="style-header">
+  <div class="navbar__logo"> 
+    <a href="https://pokemongolive.com/es/" target="_blank">
+      <img class="image" decoding="async" loading="lazy"
+        src="https://lh3.googleusercontent.com/3TSaKxXGo2wT0lu0AyNUBnkk6wkCC2AzOhJyy3JXIPm-AmZ1k9DSAroWeBUyePswCZSs5lVp3mPF7HzUpY9VPlyOV5eddITONINr3WSqLNLm=e365-w600"
+        alt="Pokémon GO" title="Pokémon GO" width="1860" height="1190">
+    </a>
+    <button id="btnHome" class="btn-home">Home</button>
+  </div>
+</header>
+
+<body>
+  <div>
+    <p> Here you will know the Pokemon characteristics of the region of Kanto and Johto, to be a better trainer.</p>
+  </div>
+  <div id="container"></div>
+  <div id="modal" class="modal-dialog"></div>
+  <div id="root"></div>
+  <div class="background"></div>
+  <script src="main.js" type="module"></script>
+</body>
+<footer class="style-footer">
+  <div class="footer-content">
+    <p> Made by Diana Buitrago &#38; Jessica Toro</p>
+    <div class="social-network">
+      <button onclick="window.open('https://www.instagram.com/pokemongoapp/')">
+        <img src="img/instagram.png" class="">
+      </button>
+      <button
+        onclick="window.open('https://play.google.com/store/apps/details?id=com.nianticlabs.pokemongo&hl=es_CO&gl=US')">
+        <img src="img/play.png" class="">
+      </button>
+      <button onclick="window.open('https://twitter.com/PokemonGoApp')">
+        <img src="img/twitter.png" class="">
+      </button>
+      <button onclick="window.open('https://www.youtube.com/channel/UCA698bls2pjQyiqP9N-iaeg')">
+        <img src="img/youtube.webp" class="">
+      </button>
+    </div>
+  </div>
+
+</footer>
+
 </html>

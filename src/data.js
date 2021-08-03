@@ -27,7 +27,7 @@ export const sortData = (data, sortBy, sortOrder) => {
     }
     return 0;
   });
-  
+
   switch (sortOrder) {
     case "ascendente":
       actualPokemon = sortPokemon;
@@ -39,4 +39,32 @@ export const sortData = (data, sortBy, sortOrder) => {
       break;
   }
   return actualPokemon;
+};
+
+export const computeStats = (data) => {
+  let sumHeight = 0;
+  data.forEach(element => {
+    let sumStats = 0;
+    sumStats = sumStats + parseInt(element.stats["base-attack"]);
+    sumStats = sumStats + parseInt(element.stats["base-defense"]);
+    sumStats = sumStats + parseInt(element.stats["base-stamina"]);
+    sumStats = sumStats + parseInt(element.stats["max-cp"]);
+    sumStats = sumStats + parseInt(element.stats["max-hp"]);
+    sumStats = sumStats / 5; // Average Stats 
+    //element.stats["max-hp"] = [{ "max-hp": element.stats["max-hp"] }, { "average": sumStats }];
+
+    sumHeight = sumHeight + (parseFloat(element.size["height"]) * 100);
+  });
+  sumHeight = (sumHeight / data.length).toFixed(2);
+
+  let sortHeight = data.sort(function (a, b) {
+    if (parseFloat(a.size["height"]) > parseFloat(b.size["height"])) {
+      return 1;
+    }
+    if (parseFloat(a.size["height"]) < parseFloat(b.size["height"])) {
+      return -1;
+    }
+    return 0;
+  });
+  return [sumHeight, sortHeight, sortHeight[0], sortHeight[sortHeight.length - 1]];
 };

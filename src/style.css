@@ -21,26 +21,69 @@
   width: 80px;
   height: 51.2px;
 }
-.btn-home {
+.btn-home, .btn-modal{
   width: 146.67px;
   height: 26.95px;
   color: #fff;
   background: #08224e;
   border-radius: 40px;
   border: 2px solid #67cba9;
-  margin-right: 15px;
   font-family: 'Lato', sans-serif;
   font-size: 15px;
   font-weight: bolder;
 }
-
+.style-footer {
+  display: flex;
+  border: solid blue;
+  background-color: #e2f7f7;
+  color: #08224e;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
+}
+.footer-content {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.social-network button {
+  border: none;
+  background-color: transparent;
+}
+.background {
+  background-image: url("img/mapa.jpg");
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  clip-path: polygon(0% 0%, 60% 0%, 100% 100%, 0% 100%);
+  /* clip-path: polygon(0% 3%, 100% 0%, 100% 97%, 0% 100%); */
+  border-radius: 10px 10px 10px 10px;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+body {
+  width:100%;
+  height: 120%;
+  background-image: url("img/pokemon-go-companeros.jpg");
+  background-repeat: no-repeat;
+  overflow: hidden;
+  z-index: 0;
+}
 .containerCard {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   flex-flow: row wrap;
-  margin-left: 50px;
+  margin-left: 60px;
   margin-top: 85px;
+  display: none;
 }
 .box-Content {
   display:flex;
@@ -192,8 +235,36 @@ text-align: center;
   margin: 2px;
   padding: 0px;
 }
+.modal-dialog {
+  display: flex;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+}
 .modal-empty-type {
   border: solid blueviolet;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  font-weight: bolder;
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  position: absolute;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  flex-direction: column;
+  place-content: center;
+}
+.btn-modal {
+  font-size: 18px;
+  align-self: flex-end;
+  align-self: center;
+  position: absolute;
+  bottom: 20px;
 }
 .container-sidenav {
   background-color: rgba(8,34,78,0.9);
@@ -206,8 +277,9 @@ text-align: center;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 12px;
-  padding-right: 5px;
+  padding-right: 10px;
   padding-left: 7px;
+  display: none;
 }
 .sidenav {
   height: 80%;
@@ -216,9 +288,20 @@ text-align: center;
 .container-sidenav::-webkit-scrollbar {
   display: block;
   width: 8px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 50px;
+  padding-bottom: 150px;
+  padding-right: 5px;
 }
-
-
+.container-sidenav::-webkit-scrollbar-track {
+  /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+  border-radius: 10px;
+}
+.container-sidenav::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+  background-color: rgba(255,255,255,1);
+}
 .close-sidenav {
   display: inline-block;
   cursor: pointer;
@@ -318,6 +401,7 @@ text-align: center;
 @media screen and (max-width: 768px){
   .white-Box{
     background-color: red !important;
+  
   }
 }
 

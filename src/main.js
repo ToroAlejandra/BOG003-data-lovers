@@ -461,6 +461,38 @@ closeSidenav.addEventListener("click", function () {
             document.querySelector(".footer-content").style.marginLeft = "180px";
             btnSort.style.display = "flex";
             btnFilter.style.display = "flex";
+
+            // Función del Boton Sort del menú lateral, para ocultar las subcategorias
+            divSort.addEventListener("click", function () {
+                divSort.classList.toggle("active");
+                if (dropdownContainerSort.style.display === "none") {
+                    dropdownContainerSort.style.display = "flex";
+                } else {
+                    dropdownContainerSort.style.display = "none";
+                }
+            });
+            // Función del Boton Filter del menú lateral, para ocultar las subcategorias
+            divFilter.addEventListener("click", function () {
+                divFilter.classList.toggle("active");
+                if (btnRegion.style.display === "block") {
+                    btnAll.style.display = "none";
+                    caretDownAll.style.display = "none";
+                    btnRegion.style.display = "none";
+                    caretDown.style.display = "none";
+                    dropdownContainer.style.display = "none";
+                    btnType.style.display = "none";
+                    caretDownType.style.display = "none";
+                    dropdownContainerType.style.display = "none";
+                } else {
+                    btnAll.style.display = "block";
+                    caretDownAll.style.display = "block";
+                    btnRegion.style.display = "block";
+                    caretDown.style.display = "block";
+                    btnType.style.display = "block";
+                    caretDownType.style.display = "block";
+                }
+            });
+            // Ocultar todos los elementos del sidenav cuando se encuentra cerrado - Tamaño = 40px
         } else {
             sidenav.style.width = "40px";
             dropdownContainerSort.style.display = "none";
@@ -482,35 +514,7 @@ closeSidenav.addEventListener("click", function () {
     }
 });
 
-// Funciones de los Botones del menú lateral, para ocultar las subcategorias de cada uno
-divSort.addEventListener("click", function () {
-    divSort.classList.toggle("active");
-    if (dropdownContainerSort.style.display === "block") {
-        dropdownContainerSort.style.display = "none";
-    } else {
-        dropdownContainerSort.style.display = "block";
-    }
-});
-divFilter.addEventListener("click", function () {
-    divFilter.classList.toggle("active");
-    if (btnRegion.style.display === "block") {
-        btnAll.style.display = "none";
-        caretDownAll.style.display = "none";
-        btnRegion.style.display = "none";
-        caretDown.style.display = "none";
-        dropdownContainer.style.display = "none";
-        btnType.style.display = "none";
-        caretDownType.style.display = "none";
-        dropdownContainerType.style.display = "none";
-    } else {
-        btnAll.style.display = "block";
-        caretDownAll.style.display = "block";
-        btnRegion.style.display = "block";
-        caretDown.style.display = "block";
-        btnType.style.display = "block";
-        caretDownType.style.display = "block";
-    }
-});
+// Muestra y oculta los elementos del botón Region
 divBtnRegion.addEventListener("click", function () {
     if (dropdownContainer.style.display === "block") {
         dropdownContainer.style.display = "none";
@@ -518,6 +522,7 @@ divBtnRegion.addEventListener("click", function () {
         dropdownContainer.style.display = "block";
     }
 });
+// Muestra y oculta los elementos del botón Type
 divBtnType.addEventListener("click", function () {
     if (dropdownContainerType.style.display === "block") {
         dropdownContainerType.style.display = "none";
@@ -525,6 +530,7 @@ divBtnType.addEventListener("click", function () {
         dropdownContainerType.style.display = "block";
     }
 });
+// Evento que muestra todos los pokémon del botón All
 divBtnAll.addEventListener("click", () => {
     currentPokemon = data.pokemon;
     modalEmptyType.style.display = "none";
@@ -532,6 +538,7 @@ divBtnAll.addEventListener("click", () => {
 });
 
 showPokemon(currentPokemon);
+
 // Botones que ordenan la data de forma ascendente y descendente
 let sortBtns = document.querySelectorAll(".sort");
 sortBtns.forEach(e => {
@@ -599,13 +606,91 @@ document.getElementById("btnHome").addEventListener("click", () => {
     document.getElementById("containerBtnLink").style.display = "flex";
     containerBox.style.display = "none";
     containerSidenav.style.display = "none";
+    document.getElementById("chart_div").style.display = "none";
 });
 
 document.getElementById("btnPokedex").addEventListener("click", () => {
+    dropdownContainerSort.style.display = "none";
+    dropdownContainerType.style.display = "none";
+    dropdownContainer.style.display = "none";
+    btnAll.style.display = "none";
+    caretDownAll.style.display = "none";
+    btnRegion.style.display = "none";
+    caretDown.style.display = "none";
+    btnType.style.display = "none";
+    caretDownType.style.display = "none";
+    btnSort.style.display = "none";
+    btnFilter.style.display = "none";
     document.getElementById("backgroundHome").style.display = "none";
     document.getElementById("modalWelcome").style.display = "none";
     document.getElementById("containerBtnLink").style.display = "none";
     containerBox.style.display = "flex";
     containerSidenav.style.display = "flex";
-
+    
 });
+
+
+// Load the Visualization API and the corechart package.
+google.charts.load('current', { 'packages': ['corechart'] });
+
+let typeStats = ["bug", "dark", "dragon", "electric", "fairy", "fighting", "fire", "flying", "ghost", "grass", "ground", "ice", "normal", "poison", "psychic", "rock", "steel", "water"];
+function drawChart() {
+    
+    
+    const data = google.visualization.arrayToDataTable([
+        ["Type", "Power", { role: "style" }],
+        [typeStats[0], parseFloat(computeStats(filterData(currentPokemon, typeStats[0]))[0]) ,"#9cb820"],
+        [typeStats[1], parseFloat(computeStats(filterData(currentPokemon, typeStats[1]))[0]) ,"#504843"],
+        [typeStats[2], parseFloat(computeStats(filterData(currentPokemon, typeStats[2]))[0]) ,"#7038f8"],
+        [typeStats[3], parseFloat(computeStats(filterData(currentPokemon, typeStats[3]))[0]) ,"#f8d030"],
+        [typeStats[4], parseFloat(computeStats(filterData(currentPokemon, typeStats[4]))[0]) ,"#f09ad9"],
+        [typeStats[5], parseFloat(computeStats(filterData(currentPokemon, typeStats[5]))[0]) ,"#c03028"],
+        [typeStats[6], parseFloat(computeStats(filterData(currentPokemon, typeStats[6]))[0]) ,"#f08030"],
+        [typeStats[7], parseFloat(computeStats(filterData(currentPokemon, typeStats[7]))[0]) ,"#9096f0"],
+        [typeStats[8], parseFloat(computeStats(filterData(currentPokemon, typeStats[8]))[0]) ,"#705898"],
+        [typeStats[9], parseFloat(computeStats(filterData(currentPokemon, typeStats[9]))[0]) ,"#22c02a"],
+        [typeStats[10], parseFloat(computeStats(filterData(currentPokemon, typeStats[10]))[0]) ,"#e0b668"],
+        [typeStats[11], parseFloat(computeStats(filterData(currentPokemon, typeStats[11]))[0]) ,"#98d8d8"],
+        [typeStats[12], parseFloat(computeStats(filterData(currentPokemon, typeStats[12]))[0]) ,"#a8a8a8"],
+        [typeStats[13], parseFloat(computeStats(filterData(currentPokemon, typeStats[13]))[0]) ,"#a040a0"],
+        [typeStats[14], parseFloat(computeStats(filterData(currentPokemon, typeStats[14]))[0]) ,"#f85888"],
+        [typeStats[15], parseFloat(computeStats(filterData(currentPokemon, typeStats[15]))[0]) ,"#b8a038"],
+        [typeStats[16], parseFloat(computeStats(filterData(currentPokemon, typeStats[16]))[0]) ,"#6d8f9c"],
+        [typeStats[17], parseFloat(computeStats(filterData(currentPokemon, typeStats[17]))[0]) ,"#6890f0"]
+    ]);
+
+    let view = new google.visualization.DataView(data);
+    view.setColumns([0, 1,
+        {
+            calc: "stringify",
+            sourceColumn: 1,
+            type: "string",
+            role: "annotation"
+        },
+        2]);
+
+    let options = {
+        title: "Average Pokémon power by type",
+        width: 1200,
+        height: 400,
+        bar: { groupWidth: "80%" },
+        legend: { position: "none" },
+    };
+
+    let chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+    chart.draw(view, options);
+}
+
+document.getElementById("btnStatistics").addEventListener("click", () => {
+    document.getElementById("chart_div").style.display = "flex";
+    document.getElementById("modalWelcome").style.display = "none";
+    document.getElementById("backgroundHome").style.display = "none";
+    document.getElementById("containerBtnLink").style.display = "none";
+    containerBox.style.display = "none";
+    containerSidenav.style.display = "none";
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+});
+
+

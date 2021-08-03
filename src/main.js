@@ -369,14 +369,14 @@ dropdownContainerSort.appendChild(dropdownZA);
 dropdownContainerSort.appendChild(dropdownUp);
 dropdownContainerSort.appendChild(dropdownDown);
 
-divBtnAll.appendChild(btnAll);
 divBtnAll.appendChild(caretDownAll);
+divBtnAll.appendChild(btnAll);
 
-divBtnRegion.appendChild(btnRegion);
 divBtnRegion.appendChild(caretDown);
+divBtnRegion.appendChild(btnRegion);
 
-divBtnType.appendChild(btnType);
 divBtnType.appendChild(caretDownType);
+divBtnType.appendChild(btnType);
 
 dropdownContainer.appendChild(dropdownKanto);
 dropdownContainer.appendChild(dropdownJohto);
@@ -415,8 +415,8 @@ divSort.appendChild(caretDownSort);
 divSort.appendChild(btnSort);
 sidenav.appendChild(closeSidenav);
 sidenav.appendChild(divSort);
-divFilter.appendChild(btnFilter);
 divFilter.appendChild(caretDownFilter);
+divFilter.appendChild(btnFilter);
 sidenav.appendChild(dropdownContainerSort);
 sidenav.appendChild(divFilter);
 sidenav.appendChild(divBtnAll);
@@ -452,16 +452,33 @@ btnModal.addEventListener("click", () => {
 
 // Evento para cerrar el menú lateral
 closeSidenav.addEventListener("click", function () {
-    if (sidenav.style.width === "40px") {
-        sidenav.style.width = "150px";
-        modalEmptyType.style.marginLeft = "80px";
-        document.getElementById("container").style.marginLeft = "170px";
-        closeSidenav.setAttribute("class", "change");
-    } else {
-        sidenav.style.width = "40px";
-        modalEmptyType.style.marginLeft = "30px";
-        document.getElementById("container").style.marginLeft = "60px";
-        closeSidenav.removeAttribute("class", "change");
+    if (containerSidenav.style.display === "flex") {
+        if (sidenav.style.width === "40px") {
+            sidenav.style.width = "150px";
+            modalEmptyType.style.marginLeft = "80px";
+            document.getElementById("container").style.marginLeft = "170px";
+            closeSidenav.setAttribute("class", "change");
+            document.querySelector(".footer-content").style.marginLeft = "180px";
+            btnSort.style.display = "flex";
+            btnFilter.style.display = "flex";
+        } else {
+            sidenav.style.width = "40px";
+            dropdownContainerSort.style.display = "none";
+            dropdownContainerType.style.display = "none";
+            dropdownContainer.style.display = "none";
+            btnAll.style.display = "none";
+            caretDownAll.style.display = "none";
+            btnRegion.style.display = "none";
+            caretDown.style.display = "none";
+            btnType.style.display = "none";
+            caretDownType.style.display = "none";
+            btnSort.style.display = "none";
+            btnFilter.style.display = "none";
+            modalEmptyType.style.marginLeft = "30px";
+            document.getElementById("container").style.marginLeft = "60px";
+            closeSidenav.removeAttribute("class", "change");
+            document.querySelector(".footer-content").style.marginLeft = "70px";
+        }
     }
 });
 
@@ -546,8 +563,7 @@ let regionBtns = document.querySelectorAll(".regionBtn");
 
 regionBtns.forEach(e => {
     e.addEventListener("click", () => {
-        currentPokemon = filterData(currentPokemon, e.innerText.toLowerCase());
-        showPokemon(currentPokemon);
+        showPokemon(filterData(currentPokemon, e.innerText.toLowerCase()));
     });
 });
 
@@ -574,4 +590,22 @@ typeBtns.forEach(e => {
         console.log(typePokemon);
     });
 });
-//console.log(computeStats(currentPokemon)[1]);
+// Terminan las funciones del proyecto
+
+//Eventos de los botones de la página principal
+document.getElementById("btnHome").addEventListener("click", () => {
+    document.getElementById("modalWelcome").style.display = "flex";
+    document.getElementById("backgroundHome").style.display = "block";
+    document.getElementById("containerBtnLink").style.display = "flex";
+    containerBox.style.display = "none";
+    containerSidenav.style.display = "none";
+});
+
+document.getElementById("btnPokedex").addEventListener("click", () => {
+    document.getElementById("backgroundHome").style.display = "none";
+    document.getElementById("modalWelcome").style.display = "none";
+    document.getElementById("containerBtnLink").style.display = "none";
+    containerBox.style.display = "flex";
+    containerSidenav.style.display = "flex";
+
+});

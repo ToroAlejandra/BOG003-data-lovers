@@ -43,6 +43,7 @@ export const sortData = (data, sortBy, sortOrder) => {
 
 export const computeStats = (data) => {
   let sumHeight = 0;
+  let averageTotal = 0;
   data.forEach(element => {
     let sumStats = 0;
     sumStats = sumStats + parseInt(element.stats["base-attack"]);
@@ -51,10 +52,13 @@ export const computeStats = (data) => {
     sumStats = sumStats + parseInt(element.stats["max-cp"]);
     sumStats = sumStats + parseInt(element.stats["max-hp"]);
     sumStats = sumStats / 5; // Average Stats 
-    //element.stats["max-hp"] = [{ "max-hp": element.stats["max-hp"] }, { "average": sumStats }];
-
+    element.stats["average"] = sumStats;
+    averageTotal += element.stats["average"];
+    // console.log(sumStats);
     sumHeight = sumHeight + (parseFloat(element.size["height"]) * 100);
   });
+  averageTotal = (averageTotal / data.length).toFixed(1);
+
   sumHeight = (sumHeight / data.length).toFixed(2);
 
   let sortHeight = data.sort(function (a, b) {
@@ -66,5 +70,5 @@ export const computeStats = (data) => {
     }
     return 0;
   });
-  return [sumHeight, sortHeight, sortHeight[0], sortHeight[sortHeight.length - 1]];
+  return [averageTotal, sumHeight, sortHeight, sortHeight[0], sortHeight[sortHeight.length - 1]];
 };

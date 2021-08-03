@@ -23,13 +23,13 @@
 }
 .btn-home, .btn-modal{
   width: 146.67px;
-  height: 35.95px;
+  height: 25.95px;
   color: #fff;
   background: #08224e;
   border-radius: 40px;
   border: 2px solid #67cba9;
   font-family: 'Lato', sans-serif;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bolder;
   cursor: pointer;
 }
@@ -420,7 +420,6 @@ text-align: center;
   cursor: pointer;
   outline: none;
   flex-direction: column;
-  display: none;
 }
 .sidenav button:hover, .dropdown-container-sort:hover, .dropdown-container:hover{
   color: #f1f1f1; 
@@ -475,6 +474,13 @@ text-align: center;
 #filterWater {
   padding-bottom: 100px;
 }
+.container-chart-div {
+  width: 0;
+  height: 0;
+} 
+/* #chart_div {
+  
+} */
 
 
 

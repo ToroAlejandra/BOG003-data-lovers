@@ -32,6 +32,7 @@
   font-size: 20px;
   font-weight: bolder;
   cursor: pointer;
+  line-height:50%;
 }
 .style-footer {
   display: flex;
@@ -99,6 +100,7 @@
   color: #fff;
   font-size: 36px;
   margin-bottom: 0;
+  text-align: center;
 }
 .welcome h3 {
   font-family: 'Lato', sans-serif;
@@ -134,15 +136,20 @@
 .btn-link-home:first-child {
   width: 30%;
   font-size: 100%;
-
+  min-width: 80px;
+  max-width: 236px;
 }
 .btn-link-home:nth-child(2){
   width: 35%;
   font-size: 100%;
+  min-width: 90px;
+  max-width: 288px;
 }
 .btn-link-home:nth-child(3){
   width: 40%;
   font-size: 100%;
+  min-width: 100px;
+  max-width: 340px;
 }
 .containerCard {
   display: flex;
@@ -484,11 +491,6 @@ text-align: center;
 
 
 
-@media screen and (max-width: 768px){
-  .white-Box{
-    background-color: red !important;
-  
-  }
-}
+
 
 

@@ -4,6 +4,7 @@ import data from './data/pokemon/pokemon.js';
 // import data from './data/rickandmorty/rickandmorty.js';
 
 
+
 let currentPokemon = data.pokemon;
 
 let containerBox = document.getElementById("container");
@@ -652,7 +653,7 @@ function drawChart() {
         [typeStats[16], parseFloat(computeStats(filterData(currentPokemon, typeStats[16]))[0]) ,"#6d8f9c"],
         [typeStats[17], parseFloat(computeStats(filterData(currentPokemon, typeStats[17]))[0]) ,"#6890f0"]
     ]);
-
+    
     let view = new google.visualization.DataView(data);
     view.setColumns([0, 1,
         {

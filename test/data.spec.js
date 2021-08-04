@@ -51,12 +51,10 @@ describe('sortData', () => {
   });
 });
 
-// describe('anotherExample', () => {
-//   it('is a function', () => {
-//     expect(typeof anotherExample).toBe('function');
-//   });
+describe('computeStats', () => {
+  it('It computeStats is a function', () => {
+    expect(typeof computeStats).toBe('function');
+  });
+  
+});
 
-//   it('returns `anotherExample`', () => {
-//     expect(anotherExample()).toBe('OMG');
-//   });
-// });

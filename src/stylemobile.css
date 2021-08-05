@@ -1,0 +1,33 @@
+@media screen and (max-width: 768px){
+    .background {
+        background-image: url("img/pokemonGoCompanerosMobile.jpg");
+        background-size: 120% 100%;
+    }
+    .containerCard {
+        margin-left: 150px;
+        background: black;
+    }
+    .container-btn-link {
+        flex-direction: row;
+        width: 93%;
+        height: 50px;
+        position: relative;
+        top: 80px;
+    }
+    .btn-link-home:nth-child(3) {
+        font-size: small;
+    }
+    .welcome {
+        width: 80%;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+    .footer-content {
+        flex-direction: column-reverse;
+    }
+    .footer-content p {
+        margin: 3px;
+    }
+  }
+
+  

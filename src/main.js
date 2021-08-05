@@ -4,6 +4,7 @@ import data from './data/pokemon/pokemon.js';
 // import data from './data/rickandmorty/rickandmorty.js';
 
 
+
 let currentPokemon = data.pokemon;
 
 let containerBox = document.getElementById("container");
@@ -462,36 +463,7 @@ closeSidenav.addEventListener("click", function () {
             btnSort.style.display = "flex";
             btnFilter.style.display = "flex";
 
-            // Función del Boton Sort del menú lateral, para ocultar las subcategorias
-            divSort.addEventListener("click", function () {
-                divSort.classList.toggle("active");
-                if (dropdownContainerSort.style.display === "none") {
-                    dropdownContainerSort.style.display = "flex";
-                } else {
-                    dropdownContainerSort.style.display = "none";
-                }
-            });
-            // Función del Boton Filter del menú lateral, para ocultar las subcategorias
-            divFilter.addEventListener("click", function () {
-                divFilter.classList.toggle("active");
-                if (btnRegion.style.display === "block") {
-                    btnAll.style.display = "none";
-                    caretDownAll.style.display = "none";
-                    btnRegion.style.display = "none";
-                    caretDown.style.display = "none";
-                    dropdownContainer.style.display = "none";
-                    btnType.style.display = "none";
-                    caretDownType.style.display = "none";
-                    dropdownContainerType.style.display = "none";
-                } else {
-                    btnAll.style.display = "block";
-                    caretDownAll.style.display = "block";
-                    btnRegion.style.display = "block";
-                    caretDown.style.display = "block";
-                    btnType.style.display = "block";
-                    caretDownType.style.display = "block";
-                }
-            });
+            
             // Ocultar todos los elementos del sidenav cuando se encuentra cerrado - Tamaño = 40px
         } else {
             sidenav.style.width = "40px";
@@ -511,6 +483,37 @@ closeSidenav.addEventListener("click", function () {
             closeSidenav.removeAttribute("class", "change");
             document.querySelector(".footer-content").style.marginLeft = "70px";
         }
+    }
+});
+
+// Función del Boton Sort del menú lateral, para ocultar las subcategorias
+divSort.addEventListener("click", function () {
+    divSort.classList.toggle("active");
+    if (dropdownContainerSort.style.display === "none") {
+        dropdownContainerSort.style.display = "flex";
+    } else {
+        dropdownContainerSort.style.display = "none";
+    }
+});
+// Función del Boton Filter del menú lateral, para ocultar las subcategorias
+divFilter.addEventListener("click", function () {
+    divFilter.classList.toggle("active");
+    if (btnRegion.style.display === "block") {
+        btnAll.style.display = "none";
+        caretDownAll.style.display = "none";
+        btnRegion.style.display = "none";
+        caretDown.style.display = "none";
+        dropdownContainer.style.display = "none";
+        btnType.style.display = "none";
+        caretDownType.style.display = "none";
+        dropdownContainerType.style.display = "none";
+    } else {
+        btnAll.style.display = "block";
+        caretDownAll.style.display = "block";
+        btnRegion.style.display = "block";
+        caretDown.style.display = "block";
+        btnType.style.display = "block";
+        caretDownType.style.display = "block";
     }
 });
 
@@ -600,15 +603,6 @@ typeBtns.forEach(e => {
 // Terminan las funciones del proyecto
 
 //Eventos de los botones de la página principal
-document.getElementById("btnHome").addEventListener("click", () => {
-    document.getElementById("modalWelcome").style.display = "flex";
-    document.getElementById("backgroundHome").style.display = "block";
-    document.getElementById("containerBtnLink").style.display = "flex";
-    containerBox.style.display = "none";
-    containerSidenav.style.display = "none";
-    document.getElementById("chart_div").style.display = "none";
-});
-
 document.getElementById("btnPokedex").addEventListener("click", () => {
     dropdownContainerSort.style.display = "none";
     dropdownContainerType.style.display = "none";
@@ -626,7 +620,8 @@ document.getElementById("btnPokedex").addEventListener("click", () => {
     document.getElementById("containerBtnLink").style.display = "none";
     containerBox.style.display = "flex";
     containerSidenav.style.display = "flex";
-    
+    currentPokemon = data.pokemon;
+    showPokemon(currentPokemon);
 });
 
 
@@ -658,7 +653,7 @@ function drawChart() {
         [typeStats[16], parseFloat(computeStats(filterData(currentPokemon, typeStats[16]))[0]) ,"#6d8f9c"],
         [typeStats[17], parseFloat(computeStats(filterData(currentPokemon, typeStats[17]))[0]) ,"#6890f0"]
     ]);
-
+    
     let view = new google.visualization.DataView(data);
     view.setColumns([0, 1,
         {

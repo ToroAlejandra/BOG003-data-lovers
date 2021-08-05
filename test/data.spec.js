@@ -1,16 +1,18 @@
-import { filterData, sortData } from '../src/data.js';
+import { computeStats, filterData, sortData } from '../src/data.js';
 
-let initialData = [{name: "muk", num: "089", generation: {name: "kanto"}, type:["poison"]}, {name: "granbull", num: "210", generation: {name: "johto"}, type:["fairy"]}, {name: "charizard", num: "006", generation: {name: "kanto"}, type:["fire", "flying"]}, {name: "mr. mime", num: "122", generation: {name: "kanto"}, type:["psychic"]}, {name: "tyranitar", num: "248", generation: {name: "johto"}, type:["rock", "dark"]}];
+let initialData = [{name: "muk", num: "089", generation: {name: "kanto"}, type:["poison"], size:{height: "1.19 m", weight: "30.0 kg"}, stats: {"base-attack": "190", "base-defense": "172", "base-stamina": "233", "max-cp": "2757", "max-hp": "195" }}, {name: "granbull", num: "210", generation: {name: "johto"}, type:["fairy"], size:{height: "1.40 m", weight: "48.7 kg"}, stats: {"base-attack": "212", "base-defense": "131", "base-stamina": "207", "max-cp": "2552", "max-hp": "175" }}, {name: "charizard", num: "006", generation: {name: "kanto"}, type:["fire", "flying"], size:{height: "1.70 m", weight: "90.5 kg"}, stats: {"base-attack": "223", "base-defense": "173", "base-stamina": "186", "max-cp": "2889", "max-hp": "158" }}, {name: "mr. mime", num: "122", generation: {name: "kanto"}, type:["psychic"], size:{height: "1.30 m", weight: "54.5 kg"}, stats: {"base-attack": "192", "base-defense": "205", "base-stamina": "120", "max-cp": "2228", "max-hp": "106" }}, {name: "tyranitar", num: "248", generation: {name: "johto"}, type:["rock", "dark"], size:{height: "2.00 m", weight: "202.0 kg"}, stats: {"base-attack": "251", "base-defense": "207", "base-stamina": "225", "max-cp": "3834", "max-hp": "189" }}];
 
-let sortByName = [{name: "charizard", num: "006", generation: {name: "kanto"}, type:["fire", "flying"]}, {name: "granbull", num: "210", generation: {name: "johto"}, type:["fairy"]}, {name: "mr. mime", num: "122", generation: {name: "kanto"}, type:["psychic"]}, {name: "muk", num: "089", generation: {name: "kanto"}, type:["poison"]}, {name: "tyranitar", num: "248", generation: {name: "johto"}, type:["rock", "dark"]}];
+let sortByName = [{name: "charizard", num: "006", generation: {name: "kanto"}, type:["fire", "flying"], size:{height: "1.70 m", weight: "90.5 kg"}, stats: {"base-attack": "223", "base-defense": "173", "base-stamina": "186", "max-cp": "2889", "max-hp": "158" }}, {name: "granbull", num: "210", generation: {name: "johto"}, type:["fairy"], size:{height: "1.40 m", weight: "48.7 kg"}, stats: {"base-attack": "212", "base-defense": "131", "base-stamina": "207", "max-cp": "2552", "max-hp": "175" }}, {name: "mr. mime", num: "122", generation: {name: "kanto"}, type:["psychic"], size:{height: "1.30 m", weight: "54.5 kg"}, stats: {"base-attack": "192", "base-defense": "205", "base-stamina": "120", "max-cp": "2228", "max-hp": "106" }}, {name: "muk", num: "089", generation: {name: "kanto"}, type:["poison"], size:{height: "1.19 m", weight: "30.0 kg"}, stats: {"base-attack": "190", "base-defense": "172", "base-stamina": "233", "max-cp": "2757", "max-hp": "195" }}, {name: "tyranitar", num: "248", generation: {name: "johto"}, type:["rock", "dark"], size:{height: "2.00 m", weight: "202.0 kg"}, stats: {"base-attack": "251", "base-defense": "207", "base-stamina": "225", "max-cp": "3834", "max-hp": "189" }}];
 
-let sortByNum = [{name: "charizard", num: "006", generation: {name: "kanto"}, type:["fire", "flying"]}, {name: "muk", num: "089", generation: {name: "kanto"}, type:["poison"]}, {name: "mr. mime", num: "122", generation: {name: "kanto"}, type:["psychic"]}, {name: "granbull", num: "210", generation: {name: "johto"}, type:["fairy"]}, {name: "tyranitar", num: "248", generation: {name: "johto"}, type:["rock", "dark"]}];
+let sortByNum = [{name: "charizard", num: "006", generation: {name: "kanto"}, type:["fire", "flying"], size:{height: "1.70 m", weight: "90.5 kg"}, stats: {"base-attack": "223", "base-defense": "173", "base-stamina": "186", "max-cp": "2889", "max-hp": "158" }}, {name: "muk", num: "089", generation: {name: "kanto"}, type:["poison"], size:{height: "1.19 m", weight: "30.0 kg"}, stats: {"base-attack": "190", "base-defense": "172", "base-stamina": "233", "max-cp": "2757", "max-hp": "195" }}, {name: "mr. mime", num: "122", generation: {name: "kanto"}, type:["psychic"], size:{height: "1.30 m", weight: "54.5 kg"}, stats: {"base-attack": "192", "base-defense": "205", "base-stamina": "120", "max-cp": "2228", "max-hp": "106" }}, {name: "granbull", num: "210", generation: {name: "johto"}, type:["fairy"], size:{height: "1.40 m", weight: "48.7 kg"}}, {name: "tyranitar", num: "248", generation: {name: "johto"}, type:["rock", "dark"], size:{height: "2.00 m", weight: "202.0 kg"}, stats: {"base-attack": "212", "base-defense": "131", "base-stamina": "207", "max-cp": "2552", "max-hp": "175" }}];
 
-let filterByKanto = [{name: "muk", num: "089", generation: {name: "kanto"}, type:["poison"]}, {name: "charizard", num: "006", generation: {name: "kanto"}, type:["fire", "flying"]}, {name: "mr. mime", num: "122", generation: {name: "kanto"}, type:["psychic"]}];
+let filterByKanto = [{name: "muk", num: "089", generation: {name: "kanto"}, type:["poison"], size:{height: "1.19 m", weight: "30.0 kg"}, stats: {"base-attack": "190", "base-defense": "172", "base-stamina": "233", "max-cp": "2757", "max-hp": "195" }}, {name: "charizard", num: "006", generation: {name: "kanto"}, type:["fire", "flying"], size:{height: "1.70 m", weight: "90.5 kg"}, stats: {"base-attack": "223", "base-defense": "173", "base-stamina": "186", "max-cp": "2889", "max-hp": "158" }}, {name: "mr. mime", num: "122", generation: {name: "kanto"}, type:["psychic"], size:{height: "1.30 m", weight: "54.5 kg"}, stats: {"base-attack": "192", "base-defense": "205", "base-stamina": "120", "max-cp": "2228", "max-hp": "106" }}];
 
-let filterByJohto = [{name: "granbull", num: "210", generation: {name: "johto"}, type:["fairy"]}, {name: "tyranitar", num: "248", generation: {name: "johto"}, type:["rock", "dark"]}];
+let filterByJohto = [{name: "granbull", num: "210", generation: {name: "johto"}, type:["fairy"], size:{height: "1.40 m", weight: "48.7 kg"}, stats: {"base-attack": "212", "base-defense": "131", "base-stamina": "207", "max-cp": "2552", "max-hp": "175" }}, {name: "tyranitar", num: "248", generation: {name: "johto"}, type:["rock", "dark"], size:{height: "2.00 m", weight: "202.0 kg"}, stats: {"base-attack": "251", "base-defense": "207", "base-stamina": "225", "max-cp": "3834", "max-hp": "189" }}];
 
-let filterByTypePoison = [{name: "muk", num: "089", generation: {name: "kanto"}, type:["poison"]}];
+let filterByTypePoison = [{name: "muk", num: "089", generation: {name: "kanto"}, type:["poison"], size:{height: "1.19 m", weight: "30.0 kg"}, stats: {"base-attack": "190", "base-defense": "172", "base-stamina": "233", "max-cp": "2757", "max-hp": "195" }}];
+
+let averageData = [{name: "muk", num: "089", generation: {name: "kanto"}, type:["poison"], size:{height: "1.19 m", weight: "30.0 kg"}, stats: {"average": 709.4, "base-attack": "190", "base-defense": "172", "base-stamina": "233", "max-cp": "2757", "max-hp": "195" }}, {name: "mr. mime", num: "122", generation: {name: "kanto"}, type:["psychic"], size:{height: "1.30 m", weight: "54.5 kg"}, stats: {"average": 570.2, "base-attack": "192", "base-defense": "205", "base-stamina": "120", "max-cp": "2228", "max-hp": "106" }}, {name: "granbull", num: "210", generation: {name: "johto"}, type:["fairy"], size:{height: "1.40 m", weight: "48.7 kg"}, stats: {"average": 655.4, "base-attack": "212", "base-defense": "131", "base-stamina": "207", "max-cp": "2552", "max-hp": "175" }}, {name: "charizard", num: "006", generation: {name: "kanto"}, type:["fire", "flying"], size:{height: "1.70 m", weight: "90.5 kg"}, stats: {"average": 725.8, "base-attack": "223", "base-defense": "173", "base-stamina": "186", "max-cp": "2889", "max-hp": "158" }}, {name: "tyranitar", num: "248", generation: {name: "johto"}, type:["rock", "dark"], size:{height: "2.00 m", weight: "202.0 kg"}, stats: {"average": 941.2, "base-attack": "251", "base-defense": "207", "base-stamina": "225", "max-cp": "3834", "max-hp": "189" }}];
 
 describe('filterData', () => {
   it('It filterData is a function', () => {
@@ -51,12 +53,12 @@ describe('sortData', () => {
   });
 });
 
-// describe('anotherExample', () => {
-//   it('is a function', () => {
-//     expect(typeof anotherExample).toBe('function');
-//   });
+describe('computeStats', () => {
+  it('It computeStats is a function', () => {
+    expect(typeof computeStats).toBe('function');
+  });
+  it('Should return the pokemon in alphabetical order according to their name', () => {
+    expect(computeStats(initialData)).toEqual(["720.4", "151.80", averageData, averageData[0], averageData[averageData.length-1]]);
+  });
+});
 
-//   it('returns `anotherExample`', () => {
-//     expect(anotherExample()).toBe('OMG');
-//   });
-// });

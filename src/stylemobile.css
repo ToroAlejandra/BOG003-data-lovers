@@ -4,8 +4,8 @@
         background-size: 120% 100%;
     }
     .containerCard {
-        margin-left: 150px;
-        background: black;
+        justify-content: center;
+        align-content: center;
     }
     .container-btn-link {
         flex-direction: row;
@@ -28,6 +28,44 @@
     .footer-content p {
         margin: 3px;
     }
+    .container-sidenav {
+          width: 60%;
+          padding-left: 7%;
+      }
+    .containerCard {
+        justify-content: center;
+        margin-left: 0;
+        padding-left: 0;
+        justify-content: space-evenly;
+    }
+    .close-sidenav-mbl {
+        position: absolute;
+        display: none;
+        z-index: 1;
+    }
+    .bar-1-mbl, .bar-2-mbl, .bar-3-mbl {
+        width: 30px;
+        height: 5px;
+        background-color: #08224e;
+        margin: 6px 0;
+        transition: 0.4s;
+      }
+    .opacity-body-sidenav {
+        
+        opacity: 0.4;
+        filter: alpha(opacity=10);       /* IE8 and lower */
+        zoom: 1
+    }
+    .opacity-body-sidenav:before {
+        content:'';
+        position: absolute;
+            top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.8);
+    }
+    
   }
 
   

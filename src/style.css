@@ -46,14 +46,25 @@
   font-size: 15px;
   font-weight: bolder;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 .footer-content {
   width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+}
+.footer-content-openSidenav {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-content-closeSidenav {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .social-network button {
   border: none;
@@ -154,12 +165,18 @@
 .containerCard {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-flow: row wrap;
   margin-left: 60px;
   margin-top: 85px;
   display: none;
 }
+.containerCardOpenSidenav {
+  margin-left: 170px;
+} 
+.containerCardCloseSidenav {
+  margin-left: 60px;
+} 
 .box-Content {
   display:flex;
   width: 250px;
@@ -334,6 +351,12 @@ text-align: center;
   flex-direction: column;
   place-content: center;
 }
+/* .modal-empty-type-openSidenav {
+  transform: translate(-30%,-50%);
+}
+.modal-empty-type-closeSidenav {
+  transform: translate(-80%,-50%);
+} */
 .btn-modal {
   font-size: 18px;
   align-self: flex-end;
@@ -358,8 +381,13 @@ text-align: center;
 }
 .sidenav {
   height: 80%;
-  width: 40px;
   margin-left: 8px;
+}
+.sidenav-closed {
+  width: 40px;
+}
+.sidenav-opened {
+  width: 150px;
 }
 .container-sidenav::-webkit-scrollbar {
   display: block;
@@ -382,9 +410,7 @@ text-align: center;
   display: inline-block;
   cursor: pointer;
   margin-left: 5px;
-  /*background-image: url("img/baseline_close_white_24dp.png") ;
-  width: 20px;
-  height: 20px;*/
+  
 }
 .bar-1, .bar-2, .bar-3 {
   width: 30px;
@@ -411,7 +437,7 @@ text-align: center;
 .dropdown-container-filter {
   display: flex;
 }
-.sidenav button, .dropdown-container-sort, .dropdown-container-filter, .dropdown-container{
+.sidenav-opened button, .dropdown-container-sort, .dropdown-container-filter, .dropdown-container{
   padding: 3px 6px 6px 18px;
   text-decoration: none;
   font-family: 'Lato', sans-serif;
@@ -428,7 +454,7 @@ text-align: center;
   outline: none;
   flex-direction: column;
 }
-.sidenav button:hover, .dropdown-container-sort:hover, .dropdown-container:hover{
+.sidenav-opened button:hover, .dropdown-container-sort:hover, .dropdown-container:hover{
   color: #f1f1f1; 
 }
 .sidenav .closebtn {

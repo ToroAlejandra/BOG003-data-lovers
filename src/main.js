@@ -412,6 +412,23 @@ closeSidenav.appendChild(bar1);
 closeSidenav.appendChild(bar2);
 closeSidenav.appendChild(bar3);
 
+// Se crean las etiquetas para crear el menú hamburguesa en mobile
+let closeSidenavMbl = document.createElement("div");
+closeSidenavMbl.setAttribute("class", "close-sidenav-mbl");
+let bar1Mbl = document.createElement("div");
+bar1Mbl.setAttribute("class", "bar-1-mbl");
+let bar2Mbl = document.createElement("div");
+bar2Mbl.setAttribute("class", "bar-2-mbl");
+let bar3Mbl = document.createElement("div");
+bar3Mbl.setAttribute("class", "bar-3-mbl");
+closeSidenavMbl.appendChild(bar1Mbl);
+closeSidenavMbl.appendChild(bar2Mbl);
+closeSidenavMbl.appendChild(bar3Mbl);
+
+document.body.appendChild(closeSidenavMbl);
+document.body.insertBefore(closeSidenavMbl, containerBox);
+
+
 divSort.appendChild(caretDownSort);
 divSort.appendChild(btnSort);
 sidenav.appendChild(closeSidenav);
@@ -452,39 +469,49 @@ btnModal.addEventListener("click", () => {
 });
 
 // Evento para cerrar el menú lateral
+sidenav.setAttribute("class", "sidenav-closed");
 closeSidenav.addEventListener("click", function () {
-    if (containerSidenav.style.display === "flex") {
-        if (sidenav.style.width === "40px") {
-            sidenav.style.width = "150px";
-            modalEmptyType.style.marginLeft = "80px";
-            document.getElementById("container").style.marginLeft = "170px";
-            closeSidenav.setAttribute("class", "change");
-            document.querySelector(".footer-content").style.marginLeft = "180px";
-            btnSort.style.display = "flex";
-            btnFilter.style.display = "flex";
-
-            
-            // Ocultar todos los elementos del sidenav cuando se encuentra cerrado - Tamaño = 40px
-        } else {
-            sidenav.style.width = "40px";
-            dropdownContainerSort.style.display = "none";
-            dropdownContainerType.style.display = "none";
-            dropdownContainer.style.display = "none";
-            btnAll.style.display = "none";
-            caretDownAll.style.display = "none";
-            btnRegion.style.display = "none";
-            caretDown.style.display = "none";
-            btnType.style.display = "none";
-            caretDownType.style.display = "none";
-            btnSort.style.display = "none";
-            btnFilter.style.display = "none";
-            modalEmptyType.style.marginLeft = "30px";
-            document.getElementById("container").style.marginLeft = "60px";
-            closeSidenav.removeAttribute("class", "change");
-            document.querySelector(".footer-content").style.marginLeft = "70px";
+    if (screen.width > 768) {
+        if (containerSidenav.style.display === "flex") {
+            if (sidenav.offsetWidth === 40) {
+                sidenav.classList.remove("sidenav-closed");
+                sidenav.classList.add("sidenav-opened");
+                // modalEmptyType.classList.remove(".modal-empty-type-closeSidenav");
+                // modalEmptyType.classList.add(".modal-empty-type-openSidenav");
+                containerBox.classList.remove("containerCardCloseSidenav");
+                containerBox.classList.add("containerCardOpenSidenav");
+                closeSidenav.setAttribute("class", "change");
+                document.getElementById("footerContent").classList.remove("footer-content-closeSidenav");
+                document.getElementById("footerContent").classList.add("footer-content-openSidenav");
+                btnSort.style.display = "flex";
+                btnFilter.style.display = "flex";
+                // Ocultar todos los elementos del sidenav cuando se encuentra cerrado - Tamaño = 40px
+            } else {
+                sidenav.classList.remove("sidenav-opened");
+                sidenav.classList.add("sidenav-closed");
+                dropdownContainerSort.style.display = "none";
+                dropdownContainerType.style.display = "none";
+                dropdownContainer.style.display = "none";
+                btnAll.style.display = "none";
+                caretDownAll.style.display = "none";
+                btnRegion.style.display = "none";
+                caretDown.style.display = "none";
+                btnType.style.display = "none";
+                caretDownType.style.display = "none";
+                btnSort.style.display = "none";
+                btnFilter.style.display = "none";
+                // modalEmptyType.classList.remove(".modal-empty-type-openSidenav");
+                // modalEmptyType.classList.add(".modal-empty-type-closeSidenav");
+                containerBox.classList.remove("containerCardOpenSidenav");
+                containerBox.classList.add("containerCardCloseSidenav");
+                closeSidenav.removeAttribute("class", "change");
+                document.getElementById("footerContent").classList.remove("footer-content-openSidenav");
+                document.getElementById("footerContent").classList.add("footer-content-closeSidenav");
+            }
         }
     }
 });
+
 
 // Función del Boton Sort del menú lateral, para ocultar las subcategorias
 divSort.addEventListener("click", function () {
@@ -566,6 +593,8 @@ sortBtns.forEach(e => {
         }
         currentPokemon = sortData(currentPokemon, sortBy, sortOrder);
         showPokemon(currentPokemon);
+
+        viewContent();
     });
 });
 
@@ -574,6 +603,7 @@ let regionBtns = document.querySelectorAll(".regionBtn");
 regionBtns.forEach(e => {
     e.addEventListener("click", () => {
         showPokemon(filterData(currentPokemon, e.innerText.toLowerCase()));
+        viewContent();
     });
 });
 
@@ -597,7 +627,7 @@ typeBtns.forEach(e => {
         } else {
             modalEmptyType.style.display = "none";
         }
-        console.log(typePokemon);
+
     });
 });
 // Terminan las funciones del proyecto
@@ -619,41 +649,79 @@ document.getElementById("btnPokedex").addEventListener("click", () => {
     document.getElementById("modalWelcome").style.display = "none";
     document.getElementById("containerBtnLink").style.display = "none";
     containerBox.style.display = "flex";
-    containerSidenav.style.display = "flex";
+    containerSidenav.style.display = "block";
     currentPokemon = data.pokemon;
     showPokemon(currentPokemon);
+
+    if (screen.width < 768) {
+        containerSidenav.classList.remove("container-sidenav");
+        containerSidenav.classList.remove("sidenav-opened");
+        sidenav.style.display = "none";
+        closeSidenavMbl.style.display = "block";
+
+
+    }
+});
+
+closeSidenavMbl.addEventListener("click", () => {
+    containerSidenav.classList.add("container-sidenav");
+    containerSidenav.classList.add("sidenav-opened");
+    sidenav.style.display = "block";
+    divSort.style.display = "flex";
+    btnSort.style.display = "flex";
+    divFilter.style.display = "flex";
+    btnFilter.style.display = "flex";
+    closeSidenav.style.display = "none";
+    closeSidenavMbl.style.display = "none";
+    sidenav.classList.remove("sidenav-closed");
+    sidenav.classList.add("sidenav-opened");
+    containerBox.classList.add("opacity-body-sidenav");
+    document.querySelector(".style-footer").classList.add("opacity-body-sidenav");
+});
+
+function viewContent() { 
+    containerSidenav.classList.remove("container-sidenav");
+    containerSidenav.classList.remove("sidenav-opened");
+    closeSidenavMbl.style.display = "block";
+    containerBox.classList.remove("opacity-body-sidenav");
+    document.querySelector(".style-footer").classList.remove("opacity-body-sidenav");
+}
+
+containerBox.addEventListener("click", () => { 
+    viewContent();
 });
 
 
 // Load the Visualization API and the corechart package.
+// eslint-disable-next-line
 google.charts.load('current', { 'packages': ['corechart'] });
 
 let typeStats = ["bug", "dark", "dragon", "electric", "fairy", "fighting", "fire", "flying", "ghost", "grass", "ground", "ice", "normal", "poison", "psychic", "rock", "steel", "water"];
 function drawChart() {
-    
-    
+
+    // eslint-disable-next-line
     const data = google.visualization.arrayToDataTable([
         ["Type", "Power", { role: "style" }],
-        [typeStats[0], parseFloat(computeStats(filterData(currentPokemon, typeStats[0]))[0]) ,"#9cb820"],
-        [typeStats[1], parseFloat(computeStats(filterData(currentPokemon, typeStats[1]))[0]) ,"#504843"],
-        [typeStats[2], parseFloat(computeStats(filterData(currentPokemon, typeStats[2]))[0]) ,"#7038f8"],
-        [typeStats[3], parseFloat(computeStats(filterData(currentPokemon, typeStats[3]))[0]) ,"#f8d030"],
-        [typeStats[4], parseFloat(computeStats(filterData(currentPokemon, typeStats[4]))[0]) ,"#f09ad9"],
-        [typeStats[5], parseFloat(computeStats(filterData(currentPokemon, typeStats[5]))[0]) ,"#c03028"],
-        [typeStats[6], parseFloat(computeStats(filterData(currentPokemon, typeStats[6]))[0]) ,"#f08030"],
-        [typeStats[7], parseFloat(computeStats(filterData(currentPokemon, typeStats[7]))[0]) ,"#9096f0"],
-        [typeStats[8], parseFloat(computeStats(filterData(currentPokemon, typeStats[8]))[0]) ,"#705898"],
-        [typeStats[9], parseFloat(computeStats(filterData(currentPokemon, typeStats[9]))[0]) ,"#22c02a"],
-        [typeStats[10], parseFloat(computeStats(filterData(currentPokemon, typeStats[10]))[0]) ,"#e0b668"],
-        [typeStats[11], parseFloat(computeStats(filterData(currentPokemon, typeStats[11]))[0]) ,"#98d8d8"],
-        [typeStats[12], parseFloat(computeStats(filterData(currentPokemon, typeStats[12]))[0]) ,"#a8a8a8"],
-        [typeStats[13], parseFloat(computeStats(filterData(currentPokemon, typeStats[13]))[0]) ,"#a040a0"],
-        [typeStats[14], parseFloat(computeStats(filterData(currentPokemon, typeStats[14]))[0]) ,"#f85888"],
-        [typeStats[15], parseFloat(computeStats(filterData(currentPokemon, typeStats[15]))[0]) ,"#b8a038"],
-        [typeStats[16], parseFloat(computeStats(filterData(currentPokemon, typeStats[16]))[0]) ,"#6d8f9c"],
-        [typeStats[17], parseFloat(computeStats(filterData(currentPokemon, typeStats[17]))[0]) ,"#6890f0"]
+        [typeStats[0], parseFloat(computeStats(filterData(currentPokemon, typeStats[0]))[0]), "#9cb820"],
+        [typeStats[1], parseFloat(computeStats(filterData(currentPokemon, typeStats[1]))[0]), "#504843"],
+        [typeStats[2], parseFloat(computeStats(filterData(currentPokemon, typeStats[2]))[0]), "#7038f8"],
+        [typeStats[3], parseFloat(computeStats(filterData(currentPokemon, typeStats[3]))[0]), "#f8d030"],
+        [typeStats[4], parseFloat(computeStats(filterData(currentPokemon, typeStats[4]))[0]), "#f09ad9"],
+        [typeStats[5], parseFloat(computeStats(filterData(currentPokemon, typeStats[5]))[0]), "#c03028"],
+        [typeStats[6], parseFloat(computeStats(filterData(currentPokemon, typeStats[6]))[0]), "#f08030"],
+        [typeStats[7], parseFloat(computeStats(filterData(currentPokemon, typeStats[7]))[0]), "#9096f0"],
+        [typeStats[8], parseFloat(computeStats(filterData(currentPokemon, typeStats[8]))[0]), "#705898"],
+        [typeStats[9], parseFloat(computeStats(filterData(currentPokemon, typeStats[9]))[0]), "#22c02a"],
+        [typeStats[10], parseFloat(computeStats(filterData(currentPokemon, typeStats[10]))[0]), "#e0b668"],
+        [typeStats[11], parseFloat(computeStats(filterData(currentPokemon, typeStats[11]))[0]), "#98d8d8"],
+        [typeStats[12], parseFloat(computeStats(filterData(currentPokemon, typeStats[12]))[0]), "#a8a8a8"],
+        [typeStats[13], parseFloat(computeStats(filterData(currentPokemon, typeStats[13]))[0]), "#a040a0"],
+        [typeStats[14], parseFloat(computeStats(filterData(currentPokemon, typeStats[14]))[0]), "#f85888"],
+        [typeStats[15], parseFloat(computeStats(filterData(currentPokemon, typeStats[15]))[0]), "#b8a038"],
+        [typeStats[16], parseFloat(computeStats(filterData(currentPokemon, typeStats[16]))[0]), "#6d8f9c"],
+        [typeStats[17], parseFloat(computeStats(filterData(currentPokemon, typeStats[17]))[0]), "#6890f0"]
     ]);
-    
+    // eslint-disable-next-line
     let view = new google.visualization.DataView(data);
     view.setColumns([0, 1,
         {
@@ -671,7 +739,7 @@ function drawChart() {
         bar: { groupWidth: "80%" },
         legend: { position: "none" },
     };
-
+    // eslint-disable-next-line
     let chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
     chart.draw(view, options);
 }
@@ -685,6 +753,7 @@ document.getElementById("btnStatistics").addEventListener("click", () => {
     containerSidenav.style.display = "none";
 
     // Set a callback to run when the Google Visualization API is loaded.
+    // eslint-disable-next-line
     google.charts.setOnLoadCallback(drawChart);
 });
 

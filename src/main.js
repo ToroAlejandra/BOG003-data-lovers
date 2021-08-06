@@ -3,8 +3,6 @@ import { filterData, sortData, computeStats } from './data.js';
 import data from './data/pokemon/pokemon.js';
 // import data from './data/rickandmorty/rickandmorty.js';
 
-
-
 let currentPokemon = data.pokemon;
 
 let containerBox = document.getElementById("container");
@@ -400,6 +398,7 @@ dropdownContainerType.appendChild(dropdownRock);
 dropdownContainerType.appendChild(dropdownSteel);
 dropdownContainerType.appendChild(dropdownWater);
 
+//Se crea el menú hamburguesa para la pantalla screen
 let closeSidenav = document.createElement("div");
 closeSidenav.setAttribute("class", "close-sidenav");
 let bar1 = document.createElement("div");
@@ -450,14 +449,20 @@ document.body.appendChild(containerSidenav);
 //Se crea el modal que sale cuando no hay pokemons para filtrar
 let modalEmptyType = document.createElement("div");
 modalEmptyType.setAttribute("class", "modal-empty-type");
-modalEmptyType.textContent = "Sorry, no pokemon to show";
+let textModalEmptyType = document.createElement("h4");
+textModalEmptyType.textContent = "Sorry, no pokemon to show";
 modalEmptyType.style.display = "none";
+let imgModalEmptyType = document.createElement("img");
+imgModalEmptyType.src = "img/modal-empty-pokemon.png";
+
 
 // Botón del modal para mostrar todos los pokemon
 let btnModal = document.createElement("button");
 btnModal.setAttribute("class", "btn-modal");
 btnModal.textContent = "All Pokemon";
 
+modalEmptyType.appendChild(textModalEmptyType);
+modalEmptyType.appendChild(imgModalEmptyType);
 modalEmptyType.appendChild(btnModal);
 document.getElementById("modal").appendChild(modalEmptyType);
 
@@ -472,7 +477,7 @@ btnModal.addEventListener("click", () => {
 sidenav.setAttribute("class", "sidenav-closed");
 closeSidenav.addEventListener("click", function () {
     if (screen.width > 768) {
-        if (containerSidenav.style.display === "flex") {
+        if (containerSidenav.style.display === "block") {
             if (sidenav.offsetWidth === 40) {
                 sidenav.classList.remove("sidenav-closed");
                 sidenav.classList.add("sidenav-opened");
@@ -485,7 +490,7 @@ closeSidenav.addEventListener("click", function () {
                 document.getElementById("footerContent").classList.add("footer-content-openSidenav");
                 btnSort.style.display = "flex";
                 btnFilter.style.display = "flex";
-                // Ocultar todos los elementos del sidenav cuando se encuentra cerrado - Tamaño = 40px
+                // Oculta todos los elementos del sidenav cuando se encuentra cerrado - Tamaño = 40px
             } else {
                 sidenav.classList.remove("sidenav-opened");
                 sidenav.classList.add("sidenav-closed");
@@ -512,19 +517,22 @@ closeSidenav.addEventListener("click", function () {
     }
 });
 
-
 // Función del Boton Sort del menú lateral, para ocultar las subcategorias
 divSort.addEventListener("click", function () {
-    divSort.classList.toggle("active");
+    if (sidenav.offsetWidth > 40) {
+        divSort.classList.toggle("active");
     if (dropdownContainerSort.style.display === "none") {
         dropdownContainerSort.style.display = "flex";
     } else {
         dropdownContainerSort.style.display = "none";
+
+    }
     }
 });
 // Función del Boton Filter del menú lateral, para ocultar las subcategorias
 divFilter.addEventListener("click", function () {
-    divFilter.classList.toggle("active");
+    if (sidenav.offsetWidth > 40) {
+        divFilter.classList.toggle("active");
     if (btnRegion.style.display === "block") {
         btnAll.style.display = "none";
         caretDownAll.style.display = "none";
@@ -541,6 +549,7 @@ divFilter.addEventListener("click", function () {
         caretDown.style.display = "block";
         btnType.style.display = "block";
         caretDownType.style.display = "block";
+    }
     }
 });
 
@@ -565,11 +574,12 @@ divBtnAll.addEventListener("click", () => {
     currentPokemon = data.pokemon;
     modalEmptyType.style.display = "none";
     showPokemon(currentPokemon);
+    viewContent();
 });
 
 showPokemon(currentPokemon);
 
-// Botones que ordenan la data de forma ascendente y descendente
+// Botones que ordenan la data de forma ascendente y descendente por nombre y número
 let sortBtns = document.querySelectorAll(".sort");
 sortBtns.forEach(e => {
     e.addEventListener("click", () => {
@@ -597,7 +607,7 @@ sortBtns.forEach(e => {
         viewContent();
     });
 });
-
+// Botones que filtran la data por region Kanto o Johto
 let regionBtns = document.querySelectorAll(".regionBtn");
 
 regionBtns.forEach(e => {
@@ -607,13 +617,14 @@ regionBtns.forEach(e => {
     });
 });
 
+// Botones que filtran la data por tipo de pokémon
 let typeBtns = document.querySelectorAll(".typeBtn");
 
 typeBtns.forEach(e => {
     e.addEventListener("click", () => {
         currentPokemon = filterData(currentPokemon, e.innerText.toLowerCase());
         showPokemon(currentPokemon);
-        // Se crea la condicion para 
+
         let typePokemon = [];
         currentPokemon.forEach(element => {
             element.type.forEach(et => {
@@ -627,7 +638,7 @@ typeBtns.forEach(e => {
         } else {
             modalEmptyType.style.display = "none";
         }
-
+        viewContent();
     });
 });
 // Terminan las funciones del proyecto
@@ -658,8 +669,6 @@ document.getElementById("btnPokedex").addEventListener("click", () => {
         containerSidenav.classList.remove("sidenav-opened");
         sidenav.style.display = "none";
         closeSidenavMbl.style.display = "block";
-
-
     }
 });
 
@@ -679,15 +688,18 @@ closeSidenavMbl.addEventListener("click", () => {
     document.querySelector(".style-footer").classList.add("opacity-body-sidenav");
 });
 
-function viewContent() { 
-    containerSidenav.classList.remove("container-sidenav");
-    containerSidenav.classList.remove("sidenav-opened");
-    closeSidenavMbl.style.display = "block";
-    containerBox.classList.remove("opacity-body-sidenav");
-    document.querySelector(".style-footer").classList.remove("opacity-body-sidenav");
+function viewContent() {
+    if (screen.width < 768) {
+        containerSidenav.classList.remove("container-sidenav");
+        containerSidenav.classList.remove("sidenav-opened");
+        sidenav.style.display = "none";
+        closeSidenavMbl.style.display = "block";
+        containerBox.classList.remove("opacity-body-sidenav");
+        document.querySelector(".style-footer").classList.remove("opacity-body-sidenav");
+    }
 }
 
-containerBox.addEventListener("click", () => { 
+containerBox.addEventListener("click", () => {
     viewContent();
 });
 

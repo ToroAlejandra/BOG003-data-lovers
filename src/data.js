@@ -58,7 +58,7 @@ export const computeStats = (data) => {
     sumHeight = sumHeight + (parseFloat(element.size["height"]) * 100);
   });
   averageTotal = (averageTotal / data.length).toFixed(1);
-  
+
   sumHeight = (sumHeight / data.length).toFixed(2);
 
   let sortHeight = data.sort(function (a, b) {

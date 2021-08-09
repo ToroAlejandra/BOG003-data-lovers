@@ -470,6 +470,7 @@ document.getElementById("modal").appendChild(modalEmptyType);
 btnModal.addEventListener("click", () => {
     currentPokemon = data.pokemon;
     modalEmptyType.style.display = "none";
+    currentPokemon = sortData(currentPokemon, "num", "ascendente");
     showPokemon(currentPokemon);
 });
 
@@ -521,35 +522,35 @@ closeSidenav.addEventListener("click", function () {
 divSort.addEventListener("click", function () {
     if (sidenav.offsetWidth > 40) {
         divSort.classList.toggle("active");
-    if (dropdownContainerSort.style.display === "none") {
-        dropdownContainerSort.style.display = "flex";
-    } else {
-        dropdownContainerSort.style.display = "none";
+        if (dropdownContainerSort.style.display === "none") {
+            dropdownContainerSort.style.display = "flex";
+        } else {
+            dropdownContainerSort.style.display = "none";
 
-    }
+        }
     }
 });
 // Función del Boton Filter del menú lateral, para ocultar las subcategorias
 divFilter.addEventListener("click", function () {
     if (sidenav.offsetWidth > 40) {
         divFilter.classList.toggle("active");
-    if (btnRegion.style.display === "block") {
-        btnAll.style.display = "none";
-        caretDownAll.style.display = "none";
-        btnRegion.style.display = "none";
-        caretDown.style.display = "none";
-        dropdownContainer.style.display = "none";
-        btnType.style.display = "none";
-        caretDownType.style.display = "none";
-        dropdownContainerType.style.display = "none";
-    } else {
-        btnAll.style.display = "block";
-        caretDownAll.style.display = "block";
-        btnRegion.style.display = "block";
-        caretDown.style.display = "block";
-        btnType.style.display = "block";
-        caretDownType.style.display = "block";
-    }
+        if (btnRegion.style.display === "block") {
+            btnAll.style.display = "none";
+            caretDownAll.style.display = "none";
+            btnRegion.style.display = "none";
+            caretDown.style.display = "none";
+            dropdownContainer.style.display = "none";
+            btnType.style.display = "none";
+            caretDownType.style.display = "none";
+            dropdownContainerType.style.display = "none";
+        } else {
+            btnAll.style.display = "block";
+            caretDownAll.style.display = "block";
+            btnRegion.style.display = "block";
+            caretDown.style.display = "block";
+            btnType.style.display = "block";
+            caretDownType.style.display = "block";
+        }
     }
 });
 
@@ -664,7 +665,7 @@ document.getElementById("btnPokedex").addEventListener("click", () => {
     currentPokemon = data.pokemon;
     showPokemon(currentPokemon);
 
-    if (screen.width < 768) {
+    if (screen.width <= 768) {
         containerSidenav.classList.remove("container-sidenav");
         containerSidenav.classList.remove("sidenav-opened");
         sidenav.style.display = "none";
@@ -689,7 +690,7 @@ closeSidenavMbl.addEventListener("click", () => {
 });
 
 function viewContent() {
-    if (screen.width < 768) {
+    if (screen.width <= 768) {
         containerSidenav.classList.remove("container-sidenav");
         containerSidenav.classList.remove("sidenav-opened");
         sidenav.style.display = "none";
@@ -744,16 +745,34 @@ function drawChart() {
         },
         2]);
 
-    let options = {
-        title: "Average Pokémon power by type",
-        width: 1200,
-        height: 400,
-        bar: { groupWidth: "80%" },
-        legend: { position: "none" },
-    };
+    if (screen.width <= 768) {
+        let options = {
+            title: "Average Pokémon power by type",
+            width: 360,
+            height: 600,
+            bar: { groupWidth: "80%" },
+            legend: { position: "none" },
+        };
+
+        // eslint-disable-next-line
+        let chart = new google.visualization.BarChart(document.getElementById("chart_div"));
+        chart.draw(view, options);
+    } else {
+        let options = {
+            title: "Average Pokémon power by type",
+            width: 1000,
+            height: 400,
+            bar: { groupWidth: "80%" },
+            legend: { position: "none" },
+        };
     // eslint-disable-next-line
     let chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
     chart.draw(view, options);
+    }
+
+
+    
+
 }
 
 document.getElementById("btnStatistics").addEventListener("click", () => {
@@ -763,6 +782,7 @@ document.getElementById("btnStatistics").addEventListener("click", () => {
     document.getElementById("containerBtnLink").style.display = "none";
     containerBox.style.display = "none";
     containerSidenav.style.display = "none";
+    document.getElementById("modal").classList.add("modal-hidden-mbl");
 
     // Set a callback to run when the Google Visualization API is loaded.
     // eslint-disable-next-line

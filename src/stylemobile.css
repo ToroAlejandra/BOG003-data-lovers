@@ -28,6 +28,9 @@
     .footer-content p {
         margin: 3px;
     }
+    .style-footer {
+        justify-content: center;
+    }
     .container-sidenav {
           width: 60%;
           padding-left: 7%;
@@ -39,7 +42,7 @@
         justify-content: space-evenly;
     }
     .close-sidenav-mbl {
-        position: absolute;
+        position: fixed;
         display: none;
         z-index: 1;
     }
@@ -65,7 +68,9 @@
         right: 0;
         background-color: rgba(0,0,0,0.8);
     }
-    
+    .modal-hidden-mbl {
+        height: 0;
+    }
   }
 
   

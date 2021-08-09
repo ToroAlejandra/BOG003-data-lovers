@@ -1,5 +1,5 @@
 ## Link a nuestro proyecto Pokemon GO DataLovers
-[Link-Proyecto](https://dimarbu.github.io/BOG003-data-lovers/src/index.html)  
+[Pokémon GO - DataLovers DL2 BOG003](https://dimarbu.github.io/BOG003-data-lovers/src/index.html)  
 
 ## Definición del producto
 

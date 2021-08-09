@@ -21,7 +21,7 @@ Teniendo en cuenta nuestro prototipo final realizamos los testeos de usabilidad 
 * Prototipo de Alta Fidelidad Final de acuerdo al Feedback recibido
 
 #### Pantalla 1
-![prototipo-alta-fidelidad-final](./src/img/PrototipoAltaFidelidad.jpg)
+![prototipo-alta-fidelidad-final](./src/img/PrototipoAltaFidelidad.JPG)
 
 #### Pantalla 2
 ![prototipo-alta-fidelidad-pantalla2](./src/img/PrototipoSegundaPantalla.jpg)

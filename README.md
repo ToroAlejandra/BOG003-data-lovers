@@ -125,3 +125,9 @@ La siguiente gráfica se realiza mediante Google Charts.
 * Uso de Google Charts para realizar la gráfica
 * Que sea responsive para mobile, desktop, tablet
 * Uso de media querys
+
+### Test 
+
+Se realizaron los test para cada función, teniendo en cuenta todos los posibles casos y dando como resultado lo siguiente:
+
+![test](./src/img/test.jpg)

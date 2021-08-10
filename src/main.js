@@ -1,9 +1,7 @@
 import { filterData, sortData, computeStats } from './data.js';
 // import data from './data/lol/lol.js';
-import data from './data/pokemon/pokemon.js';
+// import dato from './data/pokemon/pokemon.js';
 // import data from './data/rickandmorty/rickandmorty.js';
-
-let currentPokemon = data.pokemon;
 
 let containerBox = document.getElementById("container");
 //Se establece el atributo para el estilo de los div
@@ -206,7 +204,6 @@ const showPokemon = (currentPokemon) => {
     });
 };
 // Termina función showPokemon
-
 
 // Sidenav - Se crea el menú lateral que contiene los botones de filtrar y ordenar
 let containerSidenav = document.createElement("div");
@@ -455,7 +452,6 @@ modalEmptyType.style.display = "none";
 let imgModalEmptyType = document.createElement("img");
 imgModalEmptyType.src = "img/modal-empty-pokemon.png";
 
-
 // Botón del modal para mostrar todos los pokemon
 let btnModal = document.createElement("button");
 btnModal.setAttribute("class", "btn-modal");
@@ -465,14 +461,7 @@ modalEmptyType.appendChild(textModalEmptyType);
 modalEmptyType.appendChild(imgModalEmptyType);
 modalEmptyType.appendChild(btnModal);
 document.getElementById("modal").appendChild(modalEmptyType);
-
-// Evento para el botón del modal que muestra todos los Pokémon
-btnModal.addEventListener("click", () => {
-    currentPokemon = data.pokemon;
-    modalEmptyType.style.display = "none";
-    currentPokemon = sortData(currentPokemon, "num", "ascendente");
-    showPokemon(currentPokemon);
-});
+// Termina la creación de elementos visuales (html)
 
 // Evento para cerrar el menú lateral
 sidenav.setAttribute("class", "sidenav-closed");
@@ -570,6 +559,22 @@ divBtnType.addEventListener("click", function () {
         dropdownContainerType.style.display = "block";
     }
 });
+
+// Se toman los datos del json mediante fetch
+fetch('./data/pokemon/pokemon.json')
+    .then(response => response.json())
+    .then(data => {
+
+let currentPokemon = data.pokemon;
+
+// Evento para el botón del modal que muestra todos los Pokémon
+btnModal.addEventListener("click", () => {
+    currentPokemon = data.pokemon;
+    modalEmptyType.style.display = "none";
+    currentPokemon = sortData(currentPokemon, "num", "ascendente");
+    showPokemon(currentPokemon);
+});
+
 // Evento que muestra todos los pokémon del botón All
 divBtnAll.addEventListener("click", () => {
     currentPokemon = data.pokemon;
@@ -577,8 +582,6 @@ divBtnAll.addEventListener("click", () => {
     showPokemon(currentPokemon);
     viewContent();
 });
-
-showPokemon(currentPokemon);
 
 // Botones que ordenan la data de forma ascendente y descendente por nombre y número
 let sortBtns = document.querySelectorAll(".sort");
@@ -608,6 +611,7 @@ sortBtns.forEach(e => {
         viewContent();
     });
 });
+
 // Botones que filtran la data por region Kanto o Johto
 let regionBtns = document.querySelectorAll(".regionBtn");
 
@@ -703,9 +707,7 @@ function viewContent() {
 containerBox.addEventListener("click", () => {
     viewContent();
 });
-
-
-// Load the Visualization API and the corechart package.
+// Se realiza la gráfica que muestra el promedio de poder de los Pokémon por tipo
 // eslint-disable-next-line
 google.charts.load('current', { 'packages': ['corechart'] });
 
@@ -769,10 +771,6 @@ function drawChart() {
     let chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
     chart.draw(view, options);
     }
-
-
-    
-
 }
 
 document.getElementById("btnStatistics").addEventListener("click", () => {
@@ -784,9 +782,9 @@ document.getElementById("btnStatistics").addEventListener("click", () => {
     containerSidenav.style.display = "none";
     document.getElementById("modal").classList.add("modal-hidden-mbl");
 
-    // Set a callback to run when the Google Visualization API is loaded.
     // eslint-disable-next-line
     google.charts.setOnLoadCallback(drawChart);
+});
 });
 
 

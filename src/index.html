@@ -1,12 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Data Lovers</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script src="main.js" type="module"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pokémon GO - Data Lovers</title>
+  <link href="img/favicon.ico" rel="shortcut icon">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="stylemobile.css" media="(min-width: 320px)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+
+</head>
+<header class="style-header">
+  <div class="navbar__logo"> 
+    <a href="" target="_blank">
+      <img class="image" decoding="async" loading="lazy"
+        src="https://lh3.googleusercontent.com/3TSaKxXGo2wT0lu0AyNUBnkk6wkCC2AzOhJyy3JXIPm-AmZ1k9DSAroWeBUyePswCZSs5lVp3mPF7HzUpY9VPlyOV5eddITONINr3WSqLNLm=e365-w600"
+        alt="Pokémon GO" title="Pokémon GO" width="1860" height="1190">
+    </a>
+    <button id="btnHome" class="btn-home" onclick="location.href ='';" >Home</button>
+  </div>
+</header>
+
+<body>
+  <div id="backgroundHome" class="background"></div>
+  <div id="modalWelcome" class="welcome">
+    <h2>Welcome to Pokemon!</h2>
+    <h3>Here you will know the Pokemon characteristics of the region of Kanto and Johto, to be a better trainer.</h3>
+  </div>
+  <div id="containerBtnLink" class="container-btn-link">
+    <button id="btnPokedex" class="btn-link-home">Pokédex</button>
+    <button id="btnStatistics" class="btn-link-home">Statistics</button>
+    <button class="btn-link-home" onclick="window.open('https://pokemongolive.com/es/')">Play Pokémon GO</button>
+  </div>
+
+  <div id="container"></div>
+  <div id="modal" class="modal-dialog"></div>
+  <div class="container-chart-div">
+    <div id="chart_div"></div>
+  </div>
+  <div id="root"></div>
+
+  
+
+  <footer class="style-footer">
+    <div id="footerContent" class="footer-content">
+      <p> Made by Diana Buitrago &#38; Jessica Toro</p>
+      <div class="social-network">
+        <button onclick="window.open('https://www.instagram.com/pokemongoapp/')">
+          <img src="img/instagram.png" class="">
+        </button>
+        <button
+          onclick="window.open('https://play.google.com/store/apps/details?id=com.nianticlabs.pokemongo&hl=es_CO&gl=US')">
+          <img src="img/play.png" class="">
+        </button>
+        <button onclick="window.open('https://twitter.com/PokemonGoApp')">
+          <img src="img/twitter.png" class="">
+        </button>
+        <button onclick="window.open('https://www.youtube.com/channel/UCA698bls2pjQyiqP9N-iaeg')">
+          <img src="img/youtube.webp" class="">
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="main.js" type="module"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</body>
+
+
 </html>
